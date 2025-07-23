@@ -11,7 +11,7 @@ import os
 import torch
 from typing import List, Tuple, Dict, Any
 from transformer_lens import HookedTransformerConfig
-from nodes import Node, EMBED_Node, ATTN_Node, MLP_Node, FINAL_Node
+from utils.nodes import Node, EMBED_Node, ATTN_Node, MLP_Node, FINAL_Node
 
 
 def node_to_leaderboard_name(node: Node) -> str:
@@ -64,17 +64,12 @@ def create_edge_name(from_node: Node, to_node: Node) -> str:
     
     # Handle attention-specific edge types
     if isinstance(to_node, ATTN_Node):
-        if to_node.patch_query and not to_node.patch_keyvalue:
-            return f"{from_name}->{to_name}<q>"
-        elif to_node.patch_keyvalue and not to_node.patch_query:
-            return f"{from_name}->{to_name}<k>"
-        elif to_node.patch_keyvalue and to_node.patch_query:
-            # This case is ambiguous, we'll use <v> as default
-            return f"{from_name}->{to_name}<v>"
-        else:
-            return f"{from_name}->{to_name}"
+        if to_node.patch_query:
+            return [f"{from_name}->{to_name}<q>"]
+        elif to_node.patch_keyvalue:
+            return [f"{from_name}->{to_name}<k>", f"{from_name}->{to_name}<v>"]
     else:
-        return f"{from_name}->{to_name}"
+        return [f"{from_name}->{to_name}"]
 
 
 def extract_edges_from_path(path: List[Node]) -> List[Tuple[str, float]]:
@@ -106,7 +101,7 @@ def extract_edges_from_path(path: List[Node]) -> List[Tuple[str, float]]:
         edge_name = create_edge_name(from_node, to_node)
         
         
-        edges.append(edge_name)
+        edges.extend(edge_name)
     
     return edges
 
