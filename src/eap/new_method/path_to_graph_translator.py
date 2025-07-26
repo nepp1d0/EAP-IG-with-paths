@@ -213,6 +213,145 @@ def save_graph_to_json(graph_data: Dict[str, Any], filename: str):
     print(f"Graph saved to {filename}")
 
 
+def save_graph_to_pt(graph_data: Dict[str, Any], filename: str):
+    """
+    Save graph data to a .pt file.
+    
+    Args:
+        graph_data: Graph data dictionary
+        filename: Output filename
+    """
+    # Ensure the directory exists
+    os.makedirs(os.path.dirname(filename), exist_ok=True)
+    torch.save(graph_data, filename)
+    print(f"Graph saved to {filename}")
+
+
+def get_all_possible_nodes(model_cfg: HookedTransformerConfig) -> Tuple[List[str], List[str]]:
+    """
+    Generates all possible source and destination nodes for a given model config.
+    
+    Args:
+        model_cfg: Model configuration object
+        
+    Returns:
+        A tuple containing two lists: source nodes and destination nodes
+    """
+    n_layers = model_cfg.n_layers
+    n_heads = model_cfg.n_heads
+    
+    # Source nodes
+    src_nodes = ["input"]
+    for l in range(n_layers):
+        for h in range(n_heads):
+            src_nodes.append(f"a{l}.h{h}")
+        src_nodes.append(f"m{l}")
+        
+    # Destination nodes
+    dst_nodes = []
+    for l in range(n_layers):
+        for h in range(n_heads):
+            dst_nodes.append(f"a{l}.h{h}<q>")
+            dst_nodes.append(f"a{l}.h{h}<k>")
+            dst_nodes.append(f"a{l}.h{h}<v>")
+        dst_nodes.append(f"m{l}")
+    dst_nodes.append("logits")
+    
+    return src_nodes, dst_nodes
+
+
+def convert_graph_to_pt_format(
+    graph_data: Dict[str, Any],
+    model_cfg: HookedTransformerConfig,
+    percentage: float
+) -> Dict[str, Any]:
+    """
+    Converts graph data with scores to a binary graph for a given percentage of top edges.
+    
+    Args:
+        graph_data: Graph data with edge scores
+        model_cfg: Model configuration
+        percentage: Percentage of top edges to keep
+        
+    Returns:
+        Dictionary in .pt format
+    """
+    src_nodes, dst_nodes = get_all_possible_nodes(model_cfg)
+    src_map = {name: i for i, name in enumerate(src_nodes)}
+    dst_map = {name: i for i, name in enumerate(dst_nodes)}
+
+    # Get edges and scores
+    edges_with_scores = sorted(
+        graph_data["edges"].items(), 
+        key=lambda item: item[1]["score"], 
+        reverse=True
+    )
+
+    # Determine number of edges to keep
+    total_possible_edges = len(src_nodes) * len(dst_nodes)
+    num_edges_to_keep = int(total_possible_edges * (percentage / 100.0))
+    top_edges = {edge[0] for edge in edges_with_scores[:num_edges_to_keep]}
+
+    # Create tensors
+    edges_in_graph = torch.zeros((len(src_nodes), len(dst_nodes)), dtype=torch.bool)
+    nodes_in_graph = torch.zeros(len(src_nodes), dtype=torch.bool)
+
+    # Populate tensors
+    for edge_name in top_edges:
+        if "->" in edge_name:
+            from_node_full, to_node_full = edge_name.split("->")
+            from_node = from_node_full.split("<")[0]
+            
+            if from_node in src_map and to_node_full in dst_map:
+                src_idx = src_map[from_node]
+                dst_idx = dst_map[to_node_full]
+                edges_in_graph[src_idx, dst_idx] = True
+                nodes_in_graph[src_idx] = True
+
+    return {
+        "cfg": graph_data["cfg"],
+        "src_nodes": src_nodes,
+        "dst_nodes": dst_nodes,
+        "edges_in_graph": edges_in_graph,
+        "nodes_in_graph": nodes_in_graph
+    }
+
+
+def convert_json_to_pt_submissions(
+    input_filename: str,
+    output_dir: str,
+    percentages: List[float]
+):
+    """
+    Converts a single JSON file into multiple .pt submissions for different percentages.
+    
+    Args:
+        input_filename: Path to the input JSON file
+        output_dir: Directory to save the .pt files
+        percentages: List of percentages for edge thresholds
+    """
+    print(f"Loading data from {input_filename}...")
+    paths = load_paths_from_json(input_filename)
+    model_cfg = get_model_config_from_json(input_filename)
+    
+    print("Converting paths to graph format...")
+    graph_with_scores = convert_paths_to_graph_format(
+        complete_paths=paths,
+        model_cfg=model_cfg,
+        normalize_scores=False
+    )
+    
+    print(f"Generating .pt files for {len(percentages)} percentages...")
+    for p in percentages:
+        pt_data = convert_graph_to_pt_format(graph_with_scores, model_cfg, p)
+        
+        # Format filename as fraction
+        fraction = p / 100.0
+        output_filename = os.path.join(output_dir, f"{fraction}_edges.pt")
+        
+        save_graph_to_pt(pt_data, output_filename)
+        
+    print("-" * 20)
 
 
 
