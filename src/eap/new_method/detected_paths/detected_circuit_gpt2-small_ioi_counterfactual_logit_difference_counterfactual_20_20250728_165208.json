@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "model": "gpt2-small",
+    "task": "ioi",
+    "split": "train",
+    "example_idx": 0,
+    "clean_prompt": "As Carl and Maria left the consulate, Carl gave a fridge to",
+    "counterfactual_prompt": "As Carl and Maria left the consulate, Maria gave a fridge to",
+    "clean_target_token": 14200,
+    "counterfactual_target_token": 8124,
+    "find_subject_inhibition": false,
+    "timestamp": "2025-07-28T16:52:08.281368",
+    "total_paths": 2,
+    "min_contribution": 20,
+    "min_contribution_percentage": 0.0,
+    "max_depth": 100,
+    "max_branching_factor": 2048,
+    "n_layers": 12,
+    "d_model": 768,
+    "n_heads": 12,
+    "metric": "logit_difference_counterfactual",
+    "search_mode": "counterfactual"
+  },
+  "paths": [
+    {
+      "score": -20.37250518798828,
+      "nodes": [
+        {
+          "type": "EMBED_Node",
+          "layer": 0,
+          "position": 9
+        },
+        {
+          "type": "ATTN_Node",
+          "layer": 0,
+          "position": 11,
+          "head": 4,
+          "keyvalue_position": 9,
+          "patch_query": false,
+          "patch_keyvalue": true
+        },
+        {
+          "type": "MLP_Node",
+          "layer": 0,
+          "position": 11
+        },
+        {
+          "type": "ATTN_Node",
+          "layer": 5,
+          "position": 13,
+          "head": 4,
+          "keyvalue_position": 11,
+          "patch_query": false,
+          "patch_keyvalue": true
+        },
+        {
+          "type": "FINAL_Node",
+          "layer": 11,
+          "position": 13
+        }
+      ]
+    },
+    {
+      "score": -20.963279724121094,
+      "nodes": [
+        {
+          "type": "EMBED_Node",
+          "layer": 0,
+          "position": 9
+        },
+        {
+          "type": "ATTN_Node",
+          "layer": 0,
+          "position": 9,
+          "head": 10,
+          "keyvalue_position": null,
+          "patch_query": true,
+          "patch_keyvalue": false
+        },
+        {
+          "type": "MLP_Node",
+          "layer": 0,
+          "position": 9
+        },
+        {
+          "type": "ATTN_Node",
+          "layer": 5,
+          "position": 13,
+          "head": 4,
+          "keyvalue_position": 9,
+          "patch_query": false,
+          "patch_keyvalue": true
+        },
+        {
+          "type": "FINAL_Node",
+          "layer": 11,
+          "position": 13
+        }
+      ]
+    }
+  ]
+}

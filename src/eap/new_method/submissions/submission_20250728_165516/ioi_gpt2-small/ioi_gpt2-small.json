@@ -1,0 +1,62 @@
+{
+  "cfg": {
+    "n_layers": 12,
+    "n_heads": 12,
+    "d_model": 768,
+    "parallel_attn_mlp": false
+  },
+  "nodes": {
+    "m0": {
+      "in_graph": true
+    },
+    "a0.h10": {
+      "in_graph": true
+    },
+    "a5.h4": {
+      "in_graph": true
+    },
+    "logits": {
+      "in_graph": true
+    },
+    "input": {
+      "in_graph": true
+    },
+    "a0.h4": {
+      "in_graph": true
+    }
+  },
+  "edges": {
+    "input->a0.h4<k>": {
+      "score": -40.74501037597656,
+      "in_graph": true
+    },
+    "input->a0.h4<v>": {
+      "score": -40.74501037597656,
+      "in_graph": true
+    },
+    "a0.h4->m0": {
+      "score": -40.74501037597656,
+      "in_graph": true
+    },
+    "m0->a5.h4<k>": {
+      "score": -61.708290100097656,
+      "in_graph": true
+    },
+    "m0->a5.h4<v>": {
+      "score": -61.708290100097656,
+      "in_graph": true
+    },
+    "a5.h4->logits": {
+      "score": -61.708290100097656,
+      "in_graph": true
+    },
+    "input->a0.h10<q>": {
+      "score": -41.92655944824219,
+      "in_graph": true
+    },
+    "a0.h10->m0": {
+      "score": -41.92655944824219,
+      "in_graph": true
+    }
+  }
+}

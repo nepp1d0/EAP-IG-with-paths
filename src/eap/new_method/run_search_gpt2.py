@@ -23,12 +23,12 @@ TASK = "ioi" # "ioi" or "mcqa"
 TARGET_LENGTH = 32 # from 15 to 19 for ioi - from 32 to 37 for mcqa
 BATCH_SIZE = 16 # Number of samples from the dataset to consider
 DEFAULT_METRIC = compare_token_logit
-CONTRIBUTION_THRESHOLD = 0.15 # 0.25 -> 2700~ path for depth=10 with ioi / 
+CONTRIBUTION_THRESHOLD = 0.25 # 0.25 -> 2700~ path for depth=10 with ioi / 
 NOSPACE = False
 
 huggingface_hub.login(token=TOKEN)
 # Note: Eventually can set set fold_ln=False, center_unembed=False, center_writing_weights=False
-model = HookedTransformer.from_pretrained('Qwen/Qwen2.5-0.5B', 
+model = HookedTransformer.from_pretrained('gpt2-small', 
                                           device=DEVICE, 
                                           torch_dtype=torch.float32, 
                                           center_unembed=True,

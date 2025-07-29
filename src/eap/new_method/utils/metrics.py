@@ -1,7 +1,7 @@
 import torch
 from transformer_lens import HookedTransformer
 from jaxtyping import Float
-from typing import List
+from typing import List, Optional
 from torch import Tensor
 import torch.nn.functional as F
 
@@ -74,6 +74,63 @@ def compare_token_logit(clean_resid: Float[Tensor, "batch seq d_model"],
 	# Calculate the percentage difference
 	percentage_diffs = 100 * (clean_logits - corrupted_logits) / (torch.abs(clean_logits))
 	return torch.mean(percentage_diffs).item()
+
+def logit_difference_counterfactual(clean_resid: Float[Tensor, "batch seq d_model"],
+                                   counterfactual_resid: Float[Tensor, "batch seq d_model"], 
+                                   model: HookedTransformer,
+                                   target_tokens: List[int],
+                                   counterfactual_tokens: Optional[List[int]] = None,
+                                   use_ablation_mode: bool = False) -> Float:
+	""" Compute logit difference: y' - y between correct answer y (clean) and y' (counterfactual)
+		This function can handle both explicit counterfactual comparison and ablation-based comparison.
+		
+		args:
+			clean_resid: torch.Tensor, shape (batch, seq_len, d_model)
+				The final residual stream of the clean model.
+			counterfactual_resid: torch.Tensor, shape (batch, seq_len, d_model)
+				The final residual stream of the counterfactual model (or ablated model).
+			model: HookedTransformer
+				The hooked transformer model.
+			target_tokens: list of int
+				The indexes of the target tokens for the clean model.
+			counterfactual_tokens: Optional[list of int]
+				The indexes of the target tokens for the counterfactual model.
+				Required when use_ablation_mode=False.
+			use_ablation_mode: bool
+				If True, uses ablation-based comparison (counterfactual_resid is ablated version).
+				If False, uses explicit counterfactual comparison.
+		returns:
+			float
+				The logit difference: y' - y
+	"""
+	# Get the unembedding weights and bias
+	W_U = model.W_U
+	b_U = model.b_U
+
+	# Get the final residual stream for the last token
+	clean_final_resid = clean_resid[:, -1, :]
+	counterfactual_final_resid = counterfactual_resid[:, -1, :]
+	
+	# Apply the layer norm to the final residuals
+	clean_final_resid = model.ln_final(clean_final_resid)
+	counterfactual_final_resid = model.ln_final(counterfactual_final_resid)
+	
+	if use_ablation_mode:
+		# Ablation mode: counterfactual_resid is the ablated version
+		# Use same target tokens for both clean and ablated
+		clean_logits = torch.einsum('b d, d b-> b', clean_final_resid, W_U[:, target_tokens]) + b_U[target_tokens]
+		counterfactual_logits = torch.einsum('b d, d b-> b', counterfactual_final_resid, W_U[:, target_tokens]) + b_U[target_tokens]
+	else:
+		# Explicit counterfactual mode: need separate target tokens
+		if counterfactual_tokens is None:
+			raise ValueError("counterfactual_tokens must be provided when use_ablation_mode=False")
+		
+		clean_logits = torch.einsum('b d, d b-> b', clean_final_resid, W_U[:, target_tokens]) + b_U[target_tokens]
+		counterfactual_logits = torch.einsum('b d, d b-> b', counterfactual_final_resid, W_U[:, counterfactual_tokens]) + b_U[counterfactual_tokens]
+	
+	# Calculate the logit difference: y' - y
+	logit_diffs = counterfactual_logits - clean_logits
+	return torch.mean(logit_diffs).item()
 
 # TODO: check if this is correct
 def kl_divergence(clean_resid: Float[Tensor, "batch seq d_model"],
