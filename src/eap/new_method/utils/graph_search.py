@@ -505,6 +505,91 @@ def evaluate_path_with_counterfactual(model, cache, counterfactual_cache, path, 
 		
 
 
+def evaluate_path_with_counterfactual_cached_no_pos(model, cache, counterfactual_cache, path, metric, 
+                                                   correct_tokens, counterfactual_tokens, 
+                                                   message_cache, max_cached_length=2,
+                                                   invert_value=True, take_message_from_clean=True):
+	"""
+	Evaluates the contribution of a path in the transformer model using counterfactual logic
+	but working on all positions simultaneously (no position distinction).
+	This function uses message caching for efficiency.
+	
+	Args:
+		model: The transformer model.
+		cache: The activation cache for clean inputs.
+		counterfactual_cache: The activation cache for counterfactual inputs.
+		path: A list of nodes representing the path.
+		metric: A function to evaluate the path's contribution/score.
+		correct_tokens: The ground truth tokens for clean inputs.
+		counterfactual_tokens: The ground truth tokens for counterfactual inputs.
+		message_cache: Cache for storing intermediate messages.
+		max_cached_length: Maximum length of paths to cache.
+		invert_value: If True, inverts the value of the metric.
+		take_message_from_clean: If True, takes initial message from clean_cache and applies path in counterfactual_cache.
+		                        If False, takes initial message from counterfactual_cache and applies path in clean_cache.
+	Returns:
+		The contribution score of the path.
+	"""
+	if counterfactual_cache is None or counterfactual_tokens is None:
+		raise ValueError("Both counterfactual_cache and counterfactual_tokens must be provided")
+	
+	# Initialize message from cache if available
+	message = None
+	cached_length = 0
+	
+	# Try to find cached message for the path
+	if message_cache is not None:
+		for i in range(max_cached_length, -1, -1):
+			if i == 0:
+				break
+			if message_cache.get(str(path[:i]), None) is not None:
+				message = message_cache[str(path[:i])]
+				cached_length = i
+				break
+	
+	# Process the path starting from cached_length
+	for j in range(cached_length, len(path)):
+		if take_message_from_clean:
+			# Take message from clean_cache, apply path logic in counterfactual_cache
+			if j == 0:
+				# Get initial message from clean cache
+				message = path[j].forward(model, cache, patch=None)
+			else:
+				# Apply path logic in counterfactual cache
+				message = path[j].forward(model, counterfactual_cache, patch=message)
+		else:
+			# Take message from counterfactual_cache, apply path logic in clean_cache
+			if j == 0:
+				# Get initial message from counterfactual cache
+				message = path[j].forward(model, counterfactual_cache, patch=None)
+			else:
+				# Apply path logic in clean cache
+				message = path[j].forward(model, cache, patch=message)
+		
+		# Cache the message if within cacheable length
+		if j < max_cached_length and message_cache is not None:
+			message_cache[str(path[:j+1])] = message.detach().clone()
+	
+	# Perform counterfactual comparison
+	if take_message_from_clean:
+		# Compare: clean final output vs counterfactual final output with path applied
+		clean_resid = path[-1].forward(model, cache)
+		counterfactual_resid_with_path = path[-1].forward(model, counterfactual_cache, patch=message)
+	else:
+		# Compare: counterfactual final output vs clean final output with path applied
+		counterfactual_resid = path[-1].forward(model, counterfactual_cache)
+		clean_resid_with_path = path[-1].forward(model, cache, patch=message)
+		
+		# Swap for consistent comparison (clean vs counterfactual)
+		clean_resid = counterfactual_resid
+		counterfactual_resid_with_path = clean_resid_with_path
+	
+	if invert_value:
+		return -metric(clean_resid, counterfactual_resid_with_path, model, correct_tokens, counterfactual_tokens, use_ablation_mode=False)
+	return metric(clean_resid, counterfactual_resid_with_path, model, correct_tokens, counterfactual_tokens, use_ablation_mode=False)
+
+
+
 def breadth_first_search_with_counterfactual(
 	model: HookedTransformer,
 	cache: ActivationCache,
@@ -655,6 +740,165 @@ def breadth_first_search_with_counterfactual(
 		required_contribution = max(min_contribution_percentage * abs(contrib) / 100.0, min_contribution)
 		if abs(contribution) >= required_contribution:
 			completed_paths.append((contribution, [embed_node] + path))
+	
+	# Sort the completed paths by contribution and return them
+	return sorted(completed_paths, key=lambda x: x[0], reverse=True)
+		
+
+def breadth_first_search_with_counterfactual_cached_no_pos(
+	model: HookedTransformer,
+	cache: ActivationCache,
+	counterfactual_cache: ActivationCache,
+	metric: Callable,
+	start_node: list[Node],
+	ground_truth_tokens: list[int],
+	counterfactual_tokens: list[int],
+	max_depth: int = 10,
+	max_branching_factor: int = 8,
+	min_contribution: float = 10,
+	min_contribution_percentage: float = 0.0,
+	inibition_task: bool = False,
+	take_message_from_clean: bool = True,
+	cached_path_length: int = 2,
+) -> List[Tuple[float, List[Node]]]:
+	"""
+	Performs a Breadth-First Search (BFS) starting from a node backwards to identify
+	the most significant paths reaching it from an EMBED_Node.
+	This function combines counterfactual logic with position-agnostic processing and message caching.
+
+	Args:
+		model: The transformer model used for evaluation.
+		cache: The activation cache containing intermediate activations for clean inputs.
+		counterfactual_cache: The activation cache for counterfactual inputs.
+		metric: A function to evaluate the contribution or importance of a path.
+				(Assumes higher scores indicate greater importance based on evaluate_path behavior).
+		start_node: The initial node to begin the backward search from (e.g., FINAL_Node(layer=model.cfg.n_layers - 1, position=target_pos)).
+		ground_truth_tokens: The reference tokens for clean inputs.
+		counterfactual_tokens: The reference tokens for counterfactual inputs.
+		max_depth: The maximum depth of paths to explore during the search.
+		max_branching_factor: The maximum number of child nodes to expand from each node.
+		min_contribution: The minimum absolute contribution score required for a path to be considered valid.
+		min_contribution_percentage: The minimum percentage of the previous node's contribution required for expansion.
+		inibition_task: If True, reverses the contribution metric to evaluate indirect effects.
+		take_message_from_clean: If True, takes initial message from clean_cache and applies path in counterfactual_cache.
+		                        If False, takes initial message from counterfactual_cache and applies path in clean_cache.
+		cached_path_length: Maximum length of paths to cache for efficiency.
+	Returns:
+		A list of tuples containing the contribution score and the corresponding path, sorted by contribution in descending order.
+	"""
+	print("Starting breadth_first_search_with_counterfactual_cached_no_pos")
+	message_cache = {}
+	last_node_contribution = evaluate_path_with_counterfactual_cached_no_pos(
+		model, cache, counterfactual_cache, start_node, metric, ground_truth_tokens, 
+		counterfactual_tokens, message_cache, max_cached_length=cached_path_length,
+		invert_value=inibition_task, take_message_from_clean=take_message_from_clean
+	)
+	frontier = [(last_node_contribution, start_node)]
+	completed_paths = []
+	
+	pbar = tqdm(range(max_depth), desc=f"BFS search with counterfactual (no pos)")
+	for depth in pbar:
+		if not frontier:
+			break
+		print(f"Exploring depth {depth + 1} with {len(frontier)} paths in the frontier")
+		if len(frontier) > 4:
+			print(f"    Frontier: {frontier[:4]}... ](total {len(frontier)})")
+		else:
+			print(f"    Frontier: {frontier}(total {len(frontier)})")
+
+		cur_depth_frontier = []
+		# Expand all paths in the frontier looking for meaningful continuations
+		for prev_contrib, incomplete_path in frontier:
+			required_contribution = max(min_contribution_percentage * abs(prev_contrib) / 100.0, min_contribution)
+			
+			cur_path_start = incomplete_path[0]
+			cur_path_continuations = []
+
+			# Use a proxy component where heads and positions are not yet defined (declare a component of the same class)
+			candidate_components = cur_path_start.get_prev_nodes(
+				model.cfg, include_head=False, include_bos=True)
+
+			# Get the meaningful candidates for expansion
+			for candidate in candidate_components:
+				assert candidate.position is None, "This function does not support nodes with positions"
+
+				# EMBED is the base case
+				if candidate.__class__.__name__ == 'EMBED_Node':
+					contribution = evaluate_path_with_counterfactual_cached_no_pos(
+						model, cache, counterfactual_cache, [candidate] + incomplete_path, metric, 
+						ground_truth_tokens, counterfactual_tokens, message_cache, 
+						max_cached_length=cached_path_length, invert_value=inibition_task, 
+						take_message_from_clean=take_message_from_clean
+					)
+					if abs(contribution) >= required_contribution:
+						completed_paths.append((contribution, [candidate] + incomplete_path))
+
+				# ATTN requires to check the contribution of the whole component and of the individual heads
+				elif candidate.__class__.__name__ == 'ATTN_Node':
+					
+					whole_component_contribution = evaluate_path_with_counterfactual_cached_no_pos(
+						model, cache, counterfactual_cache, [candidate] + incomplete_path, metric, 
+						ground_truth_tokens, counterfactual_tokens, message_cache, 
+						max_cached_length=cached_path_length, invert_value=inibition_task, 
+						take_message_from_clean=take_message_from_clean
+					)
+					
+					# If the attention component is meaningful:
+					#   1. Check which heads are contributing
+					if abs(whole_component_contribution) >= required_contribution:
+						# 1. Check which heads are contributing
+						for head in range(model.cfg.n_heads):
+							node = ATTN_Node(candidate.layer, head=head, keyvalue_position=None, position=None, 
+											patch_keyvalue=candidate.patch_keyvalue, patch_query=candidate.patch_query)
+							contribution = evaluate_path_with_counterfactual_cached_no_pos(
+								model, cache, counterfactual_cache, [node] + incomplete_path, metric, 
+								ground_truth_tokens, counterfactual_tokens, message_cache, 
+								max_cached_length=cached_path_length, invert_value=inibition_task, 
+								take_message_from_clean=take_message_from_clean
+							)
+
+							# 2. If this head is meaningful we add it to the path
+							if abs(contribution) >= required_contribution:
+								cur_path_continuations.append((contribution, [node] + incomplete_path))
+		
+				# MLP requires to check the contribution of the whole component
+				elif candidate.__class__.__name__ == 'MLP_Node':
+					contribution = evaluate_path_with_counterfactual_cached_no_pos(
+						model, cache, counterfactual_cache, [candidate] + incomplete_path, metric, 
+						ground_truth_tokens, counterfactual_tokens, message_cache, 
+						max_cached_length=cached_path_length, invert_value=inibition_task, 
+						take_message_from_clean=take_message_from_clean
+					)
+					if abs(contribution) >= required_contribution:
+						cur_path_continuations.append((contribution, [candidate] + incomplete_path))
+			
+			# Sort the current path continuations by contribution and take the top-k		
+			cur_path_continuations.sort(key=lambda x: x[0], reverse=True)
+			cur_path_continuations = cur_path_continuations[:max_branching_factor]
+
+			# Expand the frontier with the found meaningful components
+			cur_depth_frontier.extend(cur_path_continuations)
+		frontier = cur_depth_frontier
+		pbar.set_postfix({"completed_paths": len(completed_paths), "frontier_size": len(frontier)})
+
+	# For the last step we don't need to evaluate all the nodes in the frontier, we just need to evaluate the contribution of input embeddings
+	for contrib, path in frontier:
+		# Evaluate the contribution of the EMBED_Node (no position distinction)
+		embed_node = EMBED_Node(layer=0, position=None)
+		contribution = evaluate_path_with_counterfactual_cached_no_pos(
+			model, cache, counterfactual_cache, [embed_node] + path, metric, 
+			ground_truth_tokens, counterfactual_tokens, message_cache, 
+			max_cached_length=cached_path_length, invert_value=inibition_task, 
+			take_message_from_clean=take_message_from_clean
+		)
+		required_contribution = max(min_contribution_percentage * abs(contrib) / 100.0, min_contribution)
+		if abs(contribution) >= required_contribution:
+			completed_paths.append((contribution, [embed_node] + path))
+	
+	# Clean up memory
+	message_cache.clear()  # Clear the message cache to free memory
+	torch.cuda.empty_cache()  # Clear CUDA memory if using GPU
+	gc.collect()  # Run garbage collection to free up memory
 	
 	# Sort the completed paths by contribution and return them
 	return sorted(completed_paths, key=lambda x: x[0], reverse=True)

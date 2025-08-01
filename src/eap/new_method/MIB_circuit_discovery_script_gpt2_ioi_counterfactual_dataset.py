@@ -39,7 +39,7 @@ transformers.logging.set_verbosity_error()
 # torch.set_default_dtype(torch.bfloat16)
 
 from utils.nodes import MLP_Node, EMBED_Node, FINAL_Node,Node, ATTN_Node
-from utils.graph_search import breadth_first_search_with_counterfactual
+from utils.graph_search import breadth_first_search_with_counterfactual, breadth_first_search_with_counterfactual_cached_no_pos
 import dotenv
 dotenv.load_dotenv()
 
@@ -69,11 +69,11 @@ def main():
     model = HookedTransformer.from_pretrained(args.model, device=DEVICE, torch_dtype=torch.float32)
     
     # Configuration
-    find_subject_inibition = args.find_subject_inhibition
-    if find_subject_inibition:
-        target_idx = 1  # Subject token
-    else:
-        target_idx = 0  # Indirect object token
+    #find_subject_inibition = args.find_subject_inhibition
+    #if find_subject_inibition:
+    #    target_idx = 1  # Subject token
+    #else:
+    #    target_idx = 0  # Indirect object token
 
     # Load dataset using MIB circuit track
     hf_task_name = f'mib-bench/ioi'
@@ -150,19 +150,35 @@ def main():
     print(f"Processing {len(clean_prompts)} examples with {len(clean_target_tokens)} target tokens")
     
     # Use the new counterfactual BFS function with batched processing
-    complete_paths = breadth_first_search_with_counterfactual(
+    #complete_paths = breadth_first_search_with_counterfactual(
+    #    model,
+    #    clean_cache,
+    #    counterfactual_cache,  # Explicit counterfactual cache
+    #    default_metric,
+    #    start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=position)],
+    #    ground_truth_tokens = clean_target_tokens,  # List of tokens for all examples
+    #    counterfactual_tokens = counterfactual_target_tokens,  # List of tokens for all examples
+    #    max_depth = args.max_depth,
+    #    max_branching_factor = args.max_branching_factor,
+    #    min_contribution = args.min_contribution,
+    #    min_contribution_percentage = args.min_contribution_percentage,
+    #    inibition_task = find_subject_inibition,
+    #    take_message_from_clean = True  # Take message from clean_cache, apply path in counterfactual_cache
+    #)
+
+    complete_paths = breadth_first_search_with_counterfactual_cached_no_pos(
         model,
         clean_cache,
         counterfactual_cache,  # Explicit counterfactual cache
         default_metric,
-        start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=position)],
+        start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=None)],
         ground_truth_tokens = clean_target_tokens,  # List of tokens for all examples
         counterfactual_tokens = counterfactual_target_tokens,  # List of tokens for all examples
         max_depth = args.max_depth,
         max_branching_factor = args.max_branching_factor,
         min_contribution = args.min_contribution,
         min_contribution_percentage = args.min_contribution_percentage,
-        inibition_task = find_subject_inibition,
+        inibition_task = True,
         take_message_from_clean = True  # Take message from clean_cache, apply path in counterfactual_cache
     )
     
@@ -212,7 +228,7 @@ def main():
         "counterfactual_prompts": counterfactual_prompts,
         "clean_target_tokens": clean_target_tokens,
         "counterfactual_target_tokens": counterfactual_target_tokens,
-        "find_subject_inhibition": find_subject_inibition,
+        "find_subject_inhibition": True,
         "timestamp": datetime.now().isoformat(),
         "total_paths": len(complete_paths),
         "min_contribution": args.min_contribution,

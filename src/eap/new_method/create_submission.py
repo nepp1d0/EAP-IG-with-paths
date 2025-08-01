@@ -102,7 +102,7 @@ def process_detected_paths(input_dir: str = "detected_paths", output_dir: str = 
             graph_data = convert_json_file_to_leaderboard_format(
                 input_filename=json_file,
                 output_filename=os.path.join(task_model_dir, f"{task}_{model}.json"),
-                min_score_threshold=0.0,
+                min_score_threshold=-0.0,
                 normalize_scores=True
             )
             
