@@ -1,0 +1,4206 @@
+{
+  "cfg": {
+    "n_layers": 12,
+    "n_heads": 12,
+    "d_model": 768,
+    "parallel_attn_mlp": false
+  },
+  "nodes": {
+    "a3.h10": {
+      "in_graph": true
+    },
+    "a1.h8": {
+      "in_graph": true
+    },
+    "a3.h2": {
+      "in_graph": true
+    },
+    "a2.h7": {
+      "in_graph": true
+    },
+    "a4.h4": {
+      "in_graph": true
+    },
+    "a4.h2": {
+      "in_graph": true
+    },
+    "a2.h1": {
+      "in_graph": true
+    },
+    "a4.h8": {
+      "in_graph": true
+    },
+    "m3": {
+      "in_graph": true
+    },
+    "a3.h11": {
+      "in_graph": true
+    },
+    "a2.h8": {
+      "in_graph": true
+    },
+    "a7.h1": {
+      "in_graph": true
+    },
+    "a0.h6": {
+      "in_graph": true
+    },
+    "a3.h9": {
+      "in_graph": true
+    },
+    "a1.h11": {
+      "in_graph": true
+    },
+    "a0.h2": {
+      "in_graph": true
+    },
+    "m2": {
+      "in_graph": true
+    },
+    "a5.h5": {
+      "in_graph": true
+    },
+    "a1.h3": {
+      "in_graph": true
+    },
+    "a0.h8": {
+      "in_graph": true
+    },
+    "a5.h11": {
+      "in_graph": true
+    },
+    "a6.h11": {
+      "in_graph": true
+    },
+    "a0.h5": {
+      "in_graph": true
+    },
+    "a1.h7": {
+      "in_graph": true
+    },
+    "a0.h7": {
+      "in_graph": true
+    },
+    "a2.h6": {
+      "in_graph": true
+    },
+    "a7.h6": {
+      "in_graph": true
+    },
+    "a5.h9": {
+      "in_graph": true
+    },
+    "a2.h5": {
+      "in_graph": true
+    },
+    "a5.h8": {
+      "in_graph": true
+    },
+    "a7.h0": {
+      "in_graph": true
+    },
+    "a2.h2": {
+      "in_graph": true
+    },
+    "a1.h9": {
+      "in_graph": true
+    },
+    "a6.h6": {
+      "in_graph": true
+    },
+    "a1.h0": {
+      "in_graph": true
+    },
+    "a2.h10": {
+      "in_graph": true
+    },
+    "a4.h1": {
+      "in_graph": true
+    },
+    "a6.h8": {
+      "in_graph": true
+    },
+    "a6.h4": {
+      "in_graph": true
+    },
+    "a0.h9": {
+      "in_graph": true
+    },
+    "a0.h4": {
+      "in_graph": true
+    },
+    "a1.h5": {
+      "in_graph": true
+    },
+    "a1.h1": {
+      "in_graph": true
+    },
+    "a6.h7": {
+      "in_graph": true
+    },
+    "a5.h6": {
+      "in_graph": true
+    },
+    "a6.h1": {
+      "in_graph": true
+    },
+    "a3.h8": {
+      "in_graph": true
+    },
+    "a5.h10": {
+      "in_graph": true
+    },
+    "a4.h5": {
+      "in_graph": true
+    },
+    "a4.h11": {
+      "in_graph": true
+    },
+    "input": {
+      "in_graph": true
+    },
+    "a4.h9": {
+      "in_graph": true
+    },
+    "a7.h7": {
+      "in_graph": true
+    },
+    "a5.h2": {
+      "in_graph": true
+    },
+    "a1.h4": {
+      "in_graph": true
+    },
+    "a3.h3": {
+      "in_graph": true
+    },
+    "a7.h9": {
+      "in_graph": true
+    },
+    "m1": {
+      "in_graph": true
+    },
+    "a6.h9": {
+      "in_graph": true
+    },
+    "a1.h10": {
+      "in_graph": true
+    },
+    "a3.h4": {
+      "in_graph": true
+    },
+    "a7.h5": {
+      "in_graph": true
+    },
+    "a0.h3": {
+      "in_graph": true
+    },
+    "m5": {
+      "in_graph": true
+    },
+    "a3.h1": {
+      "in_graph": true
+    },
+    "a6.h2": {
+      "in_graph": true
+    },
+    "a0.h1": {
+      "in_graph": true
+    },
+    "m4": {
+      "in_graph": true
+    },
+    "a1.h6": {
+      "in_graph": true
+    },
+    "a0.h11": {
+      "in_graph": true
+    },
+    "a5.h3": {
+      "in_graph": true
+    },
+    "a3.h0": {
+      "in_graph": true
+    },
+    "m0": {
+      "in_graph": true
+    },
+    "a4.h6": {
+      "in_graph": true
+    },
+    "a6.h0": {
+      "in_graph": true
+    },
+    "a4.h10": {
+      "in_graph": true
+    },
+    "a0.h10": {
+      "in_graph": true
+    },
+    "a1.h2": {
+      "in_graph": true
+    },
+    "a5.h0": {
+      "in_graph": true
+    },
+    "a3.h5": {
+      "in_graph": true
+    },
+    "a5.h7": {
+      "in_graph": true
+    },
+    "logits": {
+      "in_graph": true
+    },
+    "a2.h9": {
+      "in_graph": true
+    },
+    "a2.h3": {
+      "in_graph": true
+    },
+    "a4.h0": {
+      "in_graph": true
+    },
+    "a3.h7": {
+      "in_graph": true
+    },
+    "a2.h4": {
+      "in_graph": true
+    },
+    "a0.h0": {
+      "in_graph": true
+    },
+    "a4.h7": {
+      "in_graph": true
+    },
+    "a4.h3": {
+      "in_graph": true
+    },
+    "a2.h0": {
+      "in_graph": true
+    },
+    "a2.h11": {
+      "in_graph": true
+    },
+    "a5.h4": {
+      "in_graph": true
+    },
+    "a3.h6": {
+      "in_graph": true
+    }
+  },
+  "edges": {
+    "input->m0": {
+      "score": 2910.9340410232544,
+      "in_graph": true
+    },
+    "m0->m4": {
+      "score": 272.10315132141113,
+      "in_graph": true
+    },
+    "m4->a6.h9<q>": {
+      "score": 888.9733228683472,
+      "in_graph": true
+    },
+    "a6.h9->logits": {
+      "score": 3410.0564498901367,
+      "in_graph": true
+    },
+    "m0->a1.h5<k>": {
+      "score": 248.10781860351562,
+      "in_graph": true
+    },
+    "m0->a1.h5<v>": {
+      "score": 248.10781860351562,
+      "in_graph": true
+    },
+    "a1.h5->m3": {
+      "score": 235.28857707977295,
+      "in_graph": true
+    },
+    "m3->a6.h9<q>": {
+      "score": 386.8375577926636,
+      "in_graph": true
+    },
+    "m0->m5": {
+      "score": 52.66351318359375,
+      "in_graph": true
+    },
+    "m5->a6.h9<q>": {
+      "score": 962.7731237411499,
+      "in_graph": true
+    },
+    "m0->a1.h11<k>": {
+      "score": 120.76556301116943,
+      "in_graph": true
+    },
+    "m0->a1.h11<v>": {
+      "score": 120.76556301116943,
+      "in_graph": true
+    },
+    "a1.h11->m4": {
+      "score": 87.31466960906982,
+      "in_graph": true
+    },
+    "input->a0.h6<k>": {
+      "score": 1242.854570388794,
+      "in_graph": true
+    },
+    "input->a0.h6<v>": {
+      "score": 1242.854570388794,
+      "in_graph": true
+    },
+    "a0.h6->m0": {
+      "score": 623.9035387039185,
+      "in_graph": true
+    },
+    "m0->m2": {
+      "score": 1151.4519033432007,
+      "in_graph": true
+    },
+    "m2->a6.h9<q>": {
+      "score": 301.07971382141113,
+      "in_graph": true
+    },
+    "m0->m1": {
+      "score": 892.5927057266235,
+      "in_graph": true
+    },
+    "m1->a6.h9<q>": {
+      "score": 321.67297077178955,
+      "in_graph": true
+    },
+    "m0->m3": {
+      "score": 168.321870803833,
+      "in_graph": true
+    },
+    "input->a0.h10<k>": {
+      "score": 1358.3990287780762,
+      "in_graph": true
+    },
+    "input->a0.h10<v>": {
+      "score": 1358.3990287780762,
+      "in_graph": true
+    },
+    "a0.h10->m1": {
+      "score": 176.5959014892578,
+      "in_graph": true
+    },
+    "a0.h6->m4": {
+      "score": 48.10688018798828,
+      "in_graph": true
+    },
+    "input->a0.h11<k>": {
+      "score": 1733.0949993133545,
+      "in_graph": true
+    },
+    "input->a0.h11<v>": {
+      "score": 1733.0949993133545,
+      "in_graph": true
+    },
+    "a0.h11->m0": {
+      "score": 329.0330057144165,
+      "in_graph": true
+    },
+    "m1->m2": {
+      "score": 1748.656150817871,
+      "in_graph": true
+    },
+    "m2->m5": {
+      "score": 404.4821090698242,
+      "in_graph": true
+    },
+    "a1.h5->m2": {
+      "score": 209.7896146774292,
+      "in_graph": true
+    },
+    "m0->a1.h2<k>": {
+      "score": 345.29571056365967,
+      "in_graph": true
+    },
+    "m0->a1.h2<v>": {
+      "score": 345.29571056365967,
+      "in_graph": true
+    },
+    "a1.h2->m1": {
+      "score": 94.04039096832275,
+      "in_graph": true
+    },
+    "input->a0.h5<q>": {
+      "score": 2904.1491289138794,
+      "in_graph": true
+    },
+    "a0.h5->m0": {
+      "score": 1055.5102310180664,
+      "in_graph": true
+    },
+    "input->a0.h8<k>": {
+      "score": 650.5719108581543,
+      "in_graph": true
+    },
+    "input->a0.h8<v>": {
+      "score": 650.5719108581543,
+      "in_graph": true
+    },
+    "a0.h8->m0": {
+      "score": 238.1060609817505,
+      "in_graph": true
+    },
+    "a0.h6->m1": {
+      "score": 223.5528745651245,
+      "in_graph": true
+    },
+    "m2->a6.h4<q>": {
+      "score": 496.3670892715454,
+      "in_graph": true
+    },
+    "a6.h4->logits": {
+      "score": 1670.8503513336182,
+      "in_graph": true
+    },
+    "a0.h11->m2": {
+      "score": 129.72731971740723,
+      "in_graph": true
+    },
+    "m2->a3.h1<k>": {
+      "score": 447.7954349517822,
+      "in_graph": true
+    },
+    "m2->a3.h1<v>": {
+      "score": 447.7954349517822,
+      "in_graph": true
+    },
+    "a3.h1->a6.h4<q>": {
+      "score": 511.210205078125,
+      "in_graph": true
+    },
+    "input->a0.h0<k>": {
+      "score": 237.98097229003906,
+      "in_graph": true
+    },
+    "input->a0.h0<v>": {
+      "score": 237.98097229003906,
+      "in_graph": true
+    },
+    "a0.h0->a1.h7<q>": {
+      "score": 61.45608329772949,
+      "in_graph": true
+    },
+    "a1.h7->logits": {
+      "score": 163.39367198944092,
+      "in_graph": true
+    },
+    "m0->a2.h8<q>": {
+      "score": 253.10448265075684,
+      "in_graph": true
+    },
+    "a2.h8->a6.h9<q>": {
+      "score": 198.46607971191406,
+      "in_graph": true
+    },
+    "a0.h5->a1.h8<q>": {
+      "score": 152.48569202423096,
+      "in_graph": true
+    },
+    "a1.h8->m2": {
+      "score": 125.60254859924316,
+      "in_graph": true
+    },
+    "input->a0.h1<q>": {
+      "score": 358.13446617126465,
+      "in_graph": true
+    },
+    "a0.h1->a1.h7<q>": {
+      "score": 42.69678497314453,
+      "in_graph": true
+    },
+    "a0.h5->a3.h1<k>": {
+      "score": 58.768821716308594,
+      "in_graph": true
+    },
+    "a0.h5->a3.h1<v>": {
+      "score": 58.768821716308594,
+      "in_graph": true
+    },
+    "input->a0.h5<k>": {
+      "score": 509.9144220352173,
+      "in_graph": true
+    },
+    "input->a0.h5<v>": {
+      "score": 509.9144220352173,
+      "in_graph": true
+    },
+    "a0.h11->a2.h2<q>": {
+      "score": 104.52623462677002,
+      "in_graph": true
+    },
+    "a2.h2->a6.h9<q>": {
+      "score": 238.50280284881592,
+      "in_graph": true
+    },
+    "a1.h5->m4": {
+      "score": 138.59063148498535,
+      "in_graph": true
+    },
+    "input->a0.h9<k>": {
+      "score": 2593.2473907470703,
+      "in_graph": true
+    },
+    "input->a0.h9<v>": {
+      "score": 2593.2473907470703,
+      "in_graph": true
+    },
+    "a0.h9->a2.h2<k>": {
+      "score": 59.03971290588379,
+      "in_graph": true
+    },
+    "a0.h9->a2.h2<v>": {
+      "score": 59.03971290588379,
+      "in_graph": true
+    },
+    "a0.h9->m0": {
+      "score": 1196.2645082473755,
+      "in_graph": true
+    },
+    "a0.h5->a1.h4<k>": {
+      "score": 154.0656909942627,
+      "in_graph": true
+    },
+    "a0.h5->a1.h4<v>": {
+      "score": 154.0656909942627,
+      "in_graph": true
+    },
+    "a1.h4->m1": {
+      "score": 314.2064838409424,
+      "in_graph": true
+    },
+    "m2->a4.h4<q>": {
+      "score": 228.62953567504883,
+      "in_graph": true
+    },
+    "a4.h4->m4": {
+      "score": 261.33464527130127,
+      "in_graph": true
+    },
+    "input->a0.h1<k>": {
+      "score": 454.78937911987305,
+      "in_graph": true
+    },
+    "input->a0.h1<v>": {
+      "score": 454.78937911987305,
+      "in_graph": true
+    },
+    "a0.h1->a3.h9<k>": {
+      "score": 93.56743431091309,
+      "in_graph": true
+    },
+    "a0.h1->a3.h9<v>": {
+      "score": 93.56743431091309,
+      "in_graph": true
+    },
+    "a3.h9->a7.h7<q>": {
+      "score": 412.5743980407715,
+      "in_graph": true
+    },
+    "a7.h7->logits": {
+      "score": 1522.9311981201172,
+      "in_graph": true
+    },
+    "a0.h10->m2": {
+      "score": 173.47898960113525,
+      "in_graph": true
+    },
+    "a0.h9->a1.h4<k>": {
+      "score": 346.42948627471924,
+      "in_graph": true
+    },
+    "a0.h9->a1.h4<v>": {
+      "score": 346.42948627471924,
+      "in_graph": true
+    },
+    "a1.h4->m2": {
+      "score": 265.0786762237549,
+      "in_graph": true
+    },
+    "m0->a5.h4<q>": {
+      "score": 74.46490287780762,
+      "in_graph": true
+    },
+    "a5.h4->m5": {
+      "score": 194.55706787109375,
+      "in_graph": true
+    },
+    "m0->a4.h7<q>": {
+      "score": 111.45063018798828,
+      "in_graph": true
+    },
+    "a4.h7->m5": {
+      "score": 341.03996658325195,
+      "in_graph": true
+    },
+    "a4.h7->m4": {
+      "score": 436.9515209197998,
+      "in_graph": true
+    },
+    "a0.h5->m1": {
+      "score": 898.5155296325684,
+      "in_graph": true
+    },
+    "a0.h6->a1.h5<k>": {
+      "score": 172.48388004302979,
+      "in_graph": true
+    },
+    "a0.h6->a1.h5<v>": {
+      "score": 172.48388004302979,
+      "in_graph": true
+    },
+    "input->logits": {
+      "score": 40.60757827758789,
+      "in_graph": true
+    },
+    "m0->a2.h2<q>": {
+      "score": 151.53952503204346,
+      "in_graph": true
+    },
+    "a0.h1->m1": {
+      "score": 158.98656177520752,
+      "in_graph": true
+    },
+    "a0.h10->m0": {
+      "score": 375.79443645477295,
+      "in_graph": true
+    },
+    "m1->a3.h9<k>": {
+      "score": 431.9660472869873,
+      "in_graph": true
+    },
+    "m1->a3.h9<v>": {
+      "score": 431.9660472869873,
+      "in_graph": true
+    },
+    "m0->a2.h9<q>": {
+      "score": 72.31493759155273,
+      "in_graph": true
+    },
+    "a2.h9->a7.h6<k>": {
+      "score": 92.60249710083008,
+      "in_graph": true
+    },
+    "a2.h9->a7.h6<v>": {
+      "score": 92.60249710083008,
+      "in_graph": true
+    },
+    "a7.h6->logits": {
+      "score": 2744.4177389144897,
+      "in_graph": true
+    },
+    "a0.h9->a5.h4<k>": {
+      "score": 39.66127395629883,
+      "in_graph": true
+    },
+    "a0.h9->a5.h4<v>": {
+      "score": 39.66127395629883,
+      "in_graph": true
+    },
+    "a0.h9->a1.h3<q>": {
+      "score": 240.4568634033203,
+      "in_graph": true
+    },
+    "a1.h3->m1": {
+      "score": 105.23287391662598,
+      "in_graph": true
+    },
+    "m1->a2.h2<q>": {
+      "score": 152.03783702850342,
+      "in_graph": true
+    },
+    "a0.h0->m1": {
+      "score": 56.968177795410156,
+      "in_graph": true
+    },
+    "m2->a7.h7<q>": {
+      "score": 159.3742437362671,
+      "in_graph": true
+    },
+    "a0.h9->m1": {
+      "score": 221.204345703125,
+      "in_graph": true
+    },
+    "m1->a2.h9<q>": {
+      "score": 39.33074951171875,
+      "in_graph": true
+    },
+    "m2->a3.h9<k>": {
+      "score": 443.1854524612427,
+      "in_graph": true
+    },
+    "m2->a3.h9<v>": {
+      "score": 443.1854524612427,
+      "in_graph": true
+    },
+    "a0.h1->m0": {
+      "score": 366.9159755706787,
+      "in_graph": true
+    },
+    "m0->a3.h11<k>": {
+      "score": 140.24652862548828,
+      "in_graph": true
+    },
+    "m0->a3.h11<v>": {
+      "score": 140.24652862548828,
+      "in_graph": true
+    },
+    "a3.h11->a6.h4<q>": {
+      "score": 242.70866298675537,
+      "in_graph": true
+    },
+    "a1.h3->a7.h6<k>": {
+      "score": 38.43849182128906,
+      "in_graph": true
+    },
+    "a1.h3->a7.h6<v>": {
+      "score": 38.43849182128906,
+      "in_graph": true
+    },
+    "m0->a4.h11<q>": {
+      "score": 120.3206615447998,
+      "in_graph": true
+    },
+    "a4.h11->a5.h0<k>": {
+      "score": 55.08332061767578,
+      "in_graph": true
+    },
+    "a4.h11->a5.h0<v>": {
+      "score": 55.08332061767578,
+      "in_graph": true
+    },
+    "a5.h0->a7.h6<k>": {
+      "score": 1479.0361948013306,
+      "in_graph": true
+    },
+    "a5.h0->a7.h6<v>": {
+      "score": 1479.0361948013306,
+      "in_graph": true
+    },
+    "a0.h8->m2": {
+      "score": 134.50531005859375,
+      "in_graph": true
+    },
+    "m0->a2.h9<k>": {
+      "score": 38.25469207763672,
+      "in_graph": true
+    },
+    "m0->a2.h9<v>": {
+      "score": 38.25469207763672,
+      "in_graph": true
+    },
+    "a2.h9->a5.h0<k>": {
+      "score": 87.85901260375977,
+      "in_graph": true
+    },
+    "a2.h9->a5.h0<v>": {
+      "score": 87.85901260375977,
+      "in_graph": true
+    },
+    "a0.h9->a3.h9<k>": {
+      "score": 73.21224975585938,
+      "in_graph": true
+    },
+    "a0.h9->a3.h9<v>": {
+      "score": 73.21224975585938,
+      "in_graph": true
+    },
+    "m0->a2.h8<k>": {
+      "score": 289.21946811676025,
+      "in_graph": true
+    },
+    "m0->a2.h8<v>": {
+      "score": 289.21946811676025,
+      "in_graph": true
+    },
+    "m1->a3.h7<q>": {
+      "score": 305.0049886703491,
+      "in_graph": true
+    },
+    "a3.h7->a5.h0<k>": {
+      "score": 947.0292062759399,
+      "in_graph": true
+    },
+    "a3.h7->a5.h0<v>": {
+      "score": 947.0292062759399,
+      "in_graph": true
+    },
+    "m2->a4.h7<k>": {
+      "score": 122.44865703582764,
+      "in_graph": true
+    },
+    "m2->a4.h7<v>": {
+      "score": 122.44865703582764,
+      "in_graph": true
+    },
+    "m0->a3.h7<q>": {
+      "score": 312.9291582107544,
+      "in_graph": true
+    },
+    "input->a0.h3<q>": {
+      "score": 116.89140892028809,
+      "in_graph": true
+    },
+    "a0.h3->a2.h1<q>": {
+      "score": 37.75175094604492,
+      "in_graph": true
+    },
+    "a2.h1->logits": {
+      "score": 53.54311180114746,
+      "in_graph": true
+    },
+    "m4->a7.h1<q>": {
+      "score": 1156.2239971160889,
+      "in_graph": true
+    },
+    "a7.h1->logits": {
+      "score": 1910.6529006958008,
+      "in_graph": true
+    },
+    "a0.h9->a3.h11<k>": {
+      "score": 53.87324523925781,
+      "in_graph": true
+    },
+    "a0.h9->a3.h11<v>": {
+      "score": 53.87324523925781,
+      "in_graph": true
+    },
+    "input->a0.h3<k>": {
+      "score": 151.68198204040527,
+      "in_graph": true
+    },
+    "input->a0.h3<v>": {
+      "score": 151.68198204040527,
+      "in_graph": true
+    },
+    "a0.h3->m0": {
+      "score": 119.44732666015625,
+      "in_graph": true
+    },
+    "input->a0.h10<q>": {
+      "score": 275.8258171081543,
+      "in_graph": true
+    },
+    "a0.h9->a2.h0<k>": {
+      "score": 53.93707847595215,
+      "in_graph": true
+    },
+    "a0.h9->a2.h0<v>": {
+      "score": 53.93707847595215,
+      "in_graph": true
+    },
+    "a2.h0->a6.h9<q>": {
+      "score": 52.71843433380127,
+      "in_graph": true
+    },
+    "a0.h10->a2.h2<q>": {
+      "score": 68.26374435424805,
+      "in_graph": true
+    },
+    "m1->a5.h4<q>": {
+      "score": 37.38477325439453,
+      "in_graph": true
+    },
+    "a1.h3->a2.h2<q>": {
+      "score": 52.48614025115967,
+      "in_graph": true
+    },
+    "m1->m4": {
+      "score": 118.72897529602051,
+      "in_graph": true
+    },
+    "m4->a7.h7<q>": {
+      "score": 875.4858560562134,
+      "in_graph": true
+    },
+    "a0.h9->a3.h7<k>": {
+      "score": 53.88929557800293,
+      "in_graph": true
+    },
+    "a0.h9->a3.h7<v>": {
+      "score": 53.88929557800293,
+      "in_graph": true
+    },
+    "m0->a2.h4<k>": {
+      "score": 69.74930477142334,
+      "in_graph": true
+    },
+    "m0->a2.h4<v>": {
+      "score": 69.74930477142334,
+      "in_graph": true
+    },
+    "a2.h4->m2": {
+      "score": 101.66685009002686,
+      "in_graph": true
+    },
+    "m2->m3": {
+      "score": 132.90704917907715,
+      "in_graph": true
+    },
+    "m3->a7.h9<k>": {
+      "score": 118.57067394256592,
+      "in_graph": true
+    },
+    "m3->a7.h9<v>": {
+      "score": 118.57067394256592,
+      "in_graph": true
+    },
+    "a7.h9->logits": {
+      "score": 230.10818481445312,
+      "in_graph": true
+    },
+    "a1.h5->m1": {
+      "score": 67.79953479766846,
+      "in_graph": true
+    },
+    "m0->a3.h7<k>": {
+      "score": 170.45845413208008,
+      "in_graph": true
+    },
+    "m0->a3.h7<v>": {
+      "score": 170.45845413208008,
+      "in_graph": true
+    },
+    "input->a0.h7<k>": {
+      "score": 287.037633895874,
+      "in_graph": true
+    },
+    "input->a0.h7<v>": {
+      "score": 287.037633895874,
+      "in_graph": true
+    },
+    "a0.h7->a3.h11<k>": {
+      "score": 36.924949645996094,
+      "in_graph": true
+    },
+    "a0.h7->a3.h11<v>": {
+      "score": 36.924949645996094,
+      "in_graph": true
+    },
+    "a0.h7->m1": {
+      "score": 83.5780200958252,
+      "in_graph": true
+    },
+    "a0.h10->a1.h4<q>": {
+      "score": 258.3661880493164,
+      "in_graph": true
+    },
+    "a1.h4->a3.h1<k>": {
+      "score": 70.38376522064209,
+      "in_graph": true
+    },
+    "a1.h4->a3.h1<v>": {
+      "score": 70.38376522064209,
+      "in_graph": true
+    },
+    "a0.h10->a3.h7<q>": {
+      "score": 101.3051233291626,
+      "in_graph": true
+    },
+    "m0->a5.h6<k>": {
+      "score": 36.73674774169922,
+      "in_graph": true
+    },
+    "m0->a5.h6<v>": {
+      "score": 36.73674774169922,
+      "in_graph": true
+    },
+    "a5.h6->m5": {
+      "score": 53.678035736083984,
+      "in_graph": true
+    },
+    "a0.h9->m2": {
+      "score": 36.65325927734375,
+      "in_graph": true
+    },
+    "a0.h0->m4": {
+      "score": 36.620750427246094,
+      "in_graph": true
+    },
+    "a0.h11->a3.h7<q>": {
+      "score": 115.55218029022217,
+      "in_graph": true
+    },
+    "m0->a1.h6<q>": {
+      "score": 36.5047607421875,
+      "in_graph": true
+    },
+    "a1.h6->m1": {
+      "score": 52.93504333496094,
+      "in_graph": true
+    },
+    "m1->a5.h4<k>": {
+      "score": 36.49531555175781,
+      "in_graph": true
+    },
+    "m1->a5.h4<v>": {
+      "score": 36.49531555175781,
+      "in_graph": true
+    },
+    "a5.h4->a6.h4<q>": {
+      "score": 83.86350154876709,
+      "in_graph": true
+    },
+    "m0->a1.h1<q>": {
+      "score": 99.70053672790527,
+      "in_graph": true
+    },
+    "a1.h1->a7.h6<k>": {
+      "score": 51.74752616882324,
+      "in_graph": true
+    },
+    "a1.h1->a7.h6<v>": {
+      "score": 51.74752616882324,
+      "in_graph": true
+    },
+    "a0.h8->m1": {
+      "score": 130.86944961547852,
+      "in_graph": true
+    },
+    "m2->a4.h6<k>": {
+      "score": 566.5913076400757,
+      "in_graph": true
+    },
+    "m2->a4.h6<v>": {
+      "score": 566.5913076400757,
+      "in_graph": true
+    },
+    "a4.h6->m4": {
+      "score": 1162.5934238433838,
+      "in_graph": true
+    },
+    "input->a0.h6<q>": {
+      "score": 242.55774211883545,
+      "in_graph": true
+    },
+    "m2->a7.h1<q>": {
+      "score": 298.30575466156006,
+      "in_graph": true
+    },
+    "m0->a3.h5<k>": {
+      "score": 36.242591857910156,
+      "in_graph": true
+    },
+    "m0->a3.h5<v>": {
+      "score": 36.242591857910156,
+      "in_graph": true
+    },
+    "a3.h5->m4": {
+      "score": 51.93358612060547,
+      "in_graph": true
+    },
+    "a4.h11->a7.h0<q>": {
+      "score": 86.89668083190918,
+      "in_graph": true
+    },
+    "a7.h0->logits": {
+      "score": 302.46844005584717,
+      "in_graph": true
+    },
+    "m0->a3.h6<q>": {
+      "score": 68.08576202392578,
+      "in_graph": true
+    },
+    "a3.h6->a5.h0<k>": {
+      "score": 97.91075420379639,
+      "in_graph": true
+    },
+    "a3.h6->a5.h0<v>": {
+      "score": 97.91075420379639,
+      "in_graph": true
+    },
+    "m0->a1.h9<q>": {
+      "score": 83.06509304046631,
+      "in_graph": true
+    },
+    "a1.h9->m1": {
+      "score": 240.93123626708984,
+      "in_graph": true
+    },
+    "m0->a1.h10<k>": {
+      "score": 68.06009674072266,
+      "in_graph": true
+    },
+    "m0->a1.h10<v>": {
+      "score": 68.06009674072266,
+      "in_graph": true
+    },
+    "a1.h10->m1": {
+      "score": 36.02429962158203,
+      "in_graph": true
+    },
+    "a1.h3->a2.h7<k>": {
+      "score": 51.54780387878418,
+      "in_graph": true
+    },
+    "a1.h3->a2.h7<v>": {
+      "score": 51.54780387878418,
+      "in_graph": true
+    },
+    "a2.h7->a6.h9<q>": {
+      "score": 52.39437675476074,
+      "in_graph": true
+    },
+    "a1.h4->m4": {
+      "score": 81.7525691986084,
+      "in_graph": true
+    },
+    "m0->a1.h4<q>": {
+      "score": 365.9358606338501,
+      "in_graph": true
+    },
+    "a3.h9->a6.h9<q>": {
+      "score": 68.21190452575684,
+      "in_graph": true
+    },
+    "a0.h10->a5.h4<q>": {
+      "score": 35.91453170776367,
+      "in_graph": true
+    },
+    "m0->a4.h11<k>": {
+      "score": 85.45971584320068,
+      "in_graph": true
+    },
+    "m0->a4.h11<v>": {
+      "score": 85.45971584320068,
+      "in_graph": true
+    },
+    "a0.h5->a4.h6<k>": {
+      "score": 69.06979942321777,
+      "in_graph": true
+    },
+    "a0.h5->a4.h6<v>": {
+      "score": 69.06979942321777,
+      "in_graph": true
+    },
+    "m0->a1.h7<k>": {
+      "score": 35.647499084472656,
+      "in_graph": true
+    },
+    "m0->a1.h7<v>": {
+      "score": 35.647499084472656,
+      "in_graph": true
+    },
+    "a1.h7->a5.h7<k>": {
+      "score": 35.647499084472656,
+      "in_graph": true
+    },
+    "a1.h7->a5.h7<v>": {
+      "score": 35.647499084472656,
+      "in_graph": true
+    },
+    "a5.h7->a7.h6<k>": {
+      "score": 83.35724258422852,
+      "in_graph": true
+    },
+    "a5.h7->a7.h6<v>": {
+      "score": 83.35724258422852,
+      "in_graph": true
+    },
+    "a3.h9->a6.h1<q>": {
+      "score": 744.9824275970459,
+      "in_graph": true
+    },
+    "a6.h1->logits": {
+      "score": 1584.1328287124634,
+      "in_graph": true
+    },
+    "m0->a1.h8<k>": {
+      "score": 264.5000762939453,
+      "in_graph": true
+    },
+    "m0->a1.h8<v>": {
+      "score": 264.5000762939453,
+      "in_graph": true
+    },
+    "a1.h8->a3.h7<q>": {
+      "score": 86.80972290039062,
+      "in_graph": true
+    },
+    "a0.h11->a1.h9<q>": {
+      "score": 272.3365259170532,
+      "in_graph": true
+    },
+    "a1.h2->m2": {
+      "score": 160.29675674438477,
+      "in_graph": true
+    },
+    "a1.h9->a3.h1<k>": {
+      "score": 81.35473442077637,
+      "in_graph": true
+    },
+    "a1.h9->a3.h1<v>": {
+      "score": 81.35473442077637,
+      "in_graph": true
+    },
+    "a0.h3->m4": {
+      "score": 35.48207473754883,
+      "in_graph": true
+    },
+    "m1->m3": {
+      "score": 35.42866516113281,
+      "in_graph": true
+    },
+    "m3->m4": {
+      "score": 35.42866516113281,
+      "in_graph": true
+    },
+    "m4->a5.h10<k>": {
+      "score": 116.52122116088867,
+      "in_graph": true
+    },
+    "m4->a5.h10<v>": {
+      "score": 116.52122116088867,
+      "in_graph": true
+    },
+    "a5.h10->a7.h1<q>": {
+      "score": 113.52970886230469,
+      "in_graph": true
+    },
+    "m0->a2.h1<k>": {
+      "score": 67.03633308410645,
+      "in_graph": true
+    },
+    "m0->a2.h1<v>": {
+      "score": 67.03633308410645,
+      "in_graph": true
+    },
+    "a2.h1->m2": {
+      "score": 81.66714763641357,
+      "in_graph": true
+    },
+    "a1.h4->a3.h7<q>": {
+      "score": 67.95246505737305,
+      "in_graph": true
+    },
+    "m3->a7.h1<q>": {
+      "score": 365.6997003555298,
+      "in_graph": true
+    },
+    "a0.h8->a3.h7<q>": {
+      "score": 35.27019500732422,
+      "in_graph": true
+    },
+    "m2->a3.h7<k>": {
+      "score": 210.84509563446045,
+      "in_graph": true
+    },
+    "m2->a3.h7<v>": {
+      "score": 210.84509563446045,
+      "in_graph": true
+    },
+    "input->m1": {
+      "score": 317.64050006866455,
+      "in_graph": true
+    },
+    "a2.h8->a3.h11<k>": {
+      "score": 51.17046356201172,
+      "in_graph": true
+    },
+    "a2.h8->a3.h11<v>": {
+      "score": 51.17046356201172,
+      "in_graph": true
+    },
+    "m0->a1.h0<q>": {
+      "score": 97.99773788452148,
+      "in_graph": true
+    },
+    "a1.h0->m1": {
+      "score": 67.00684547424316,
+      "in_graph": true
+    },
+    "m1->a2.h8<k>": {
+      "score": 130.51837253570557,
+      "in_graph": true
+    },
+    "m1->a2.h8<v>": {
+      "score": 130.51837253570557,
+      "in_graph": true
+    },
+    "a2.h8->a5.h4<q>": {
+      "score": 245.28657627105713,
+      "in_graph": true
+    },
+    "a5.h4->logits": {
+      "score": 804.8673095703125,
+      "in_graph": true
+    },
+    "input->a3.h1<k>": {
+      "score": 35.08240509033203,
+      "in_graph": true
+    },
+    "input->a3.h1<v>": {
+      "score": 35.08240509033203,
+      "in_graph": true
+    },
+    "input->a0.h0<q>": {
+      "score": 35.06929397583008,
+      "in_graph": true
+    },
+    "a1.h5->a3.h11<k>": {
+      "score": 34.93994903564453,
+      "in_graph": true
+    },
+    "a1.h5->a3.h11<v>": {
+      "score": 34.93994903564453,
+      "in_graph": true
+    },
+    "a1.h2->m4": {
+      "score": 34.897945404052734,
+      "in_graph": true
+    },
+    "m2->a6.h2<q>": {
+      "score": 240.81883239746094,
+      "in_graph": true
+    },
+    "a6.h2->logits": {
+      "score": 383.33320140838623,
+      "in_graph": true
+    },
+    "a0.h5->m2": {
+      "score": 385.7930974960327,
+      "in_graph": true
+    },
+    "m2->m4": {
+      "score": 161.98741722106934,
+      "in_graph": true
+    },
+    "a0.h5->a7.h7<q>": {
+      "score": 34.816497802734375,
+      "in_graph": true
+    },
+    "a0.h11->a1.h3<k>": {
+      "score": 80.61968231201172,
+      "in_graph": true
+    },
+    "a0.h11->a1.h3<v>": {
+      "score": 80.61968231201172,
+      "in_graph": true
+    },
+    "a1.h3->m2": {
+      "score": 65.42030811309814,
+      "in_graph": true
+    },
+    "input->a6.h0<k>": {
+      "score": 34.689300537109375,
+      "in_graph": true
+    },
+    "input->a6.h0<v>": {
+      "score": 34.689300537109375,
+      "in_graph": true
+    },
+    "a6.h0->a7.h6<k>": {
+      "score": 82.40634727478027,
+      "in_graph": true
+    },
+    "a6.h0->a7.h6<v>": {
+      "score": 82.40634727478027,
+      "in_graph": true
+    },
+    "m2->a3.h7<q>": {
+      "score": 178.20325565338135,
+      "in_graph": true
+    },
+    "m1->a2.h8<q>": {
+      "score": 82.82692813873291,
+      "in_graph": true
+    },
+    "a0.h10->a4.h7<q>": {
+      "score": 67.56654357910156,
+      "in_graph": true
+    },
+    "m0->a1.h5<q>": {
+      "score": 82.7291431427002,
+      "in_graph": true
+    },
+    "a2.h8->m2": {
+      "score": 84.44490146636963,
+      "in_graph": true
+    },
+    "input->a5.h2<k>": {
+      "score": 34.567726135253906,
+      "in_graph": true
+    },
+    "input->a5.h2<v>": {
+      "score": 34.567726135253906,
+      "in_graph": true
+    },
+    "a5.h2->a6.h4<q>": {
+      "score": 177.3419771194458,
+      "in_graph": true
+    },
+    "a4.h11->m4": {
+      "score": 50.2379789352417,
+      "in_graph": true
+    },
+    "m4->a6.h1<q>": {
+      "score": 401.47983264923096,
+      "in_graph": true
+    },
+    "m0->a1.h8<q>": {
+      "score": 83.32258224487305,
+      "in_graph": true
+    },
+    "a1.h8->m1": {
+      "score": 163.98922634124756,
+      "in_graph": true
+    },
+    "m0->a3.h9<k>": {
+      "score": 67.92193222045898,
+      "in_graph": true
+    },
+    "m0->a3.h9<v>": {
+      "score": 67.92193222045898,
+      "in_graph": true
+    },
+    "a5.h10->a7.h6<k>": {
+      "score": 224.1936559677124,
+      "in_graph": true
+    },
+    "a5.h10->a7.h6<v>": {
+      "score": 224.1936559677124,
+      "in_graph": true
+    },
+    "a1.h11->m1": {
+      "score": 65.87719440460205,
+      "in_graph": true
+    },
+    "a2.h8->a7.h9<k>": {
+      "score": 112.91854667663574,
+      "in_graph": true
+    },
+    "a2.h8->a7.h9<v>": {
+      "score": 112.91854667663574,
+      "in_graph": true
+    },
+    "a0.h11->a2.h8<q>": {
+      "score": 66.81027507781982,
+      "in_graph": true
+    },
+    "m1->a4.h7<q>": {
+      "score": 67.11310768127441,
+      "in_graph": true
+    },
+    "input->a0.h8<q>": {
+      "score": 159.00420761108398,
+      "in_graph": true
+    },
+    "input->a1.h7<q>": {
+      "score": 34.28770065307617,
+      "in_graph": true
+    },
+    "a0.h9->a4.h3<k>": {
+      "score": 34.25672149658203,
+      "in_graph": true
+    },
+    "a0.h9->a4.h3<v>": {
+      "score": 34.25672149658203,
+      "in_graph": true
+    },
+    "a4.h3->a7.h5<q>": {
+      "score": 49.847124099731445,
+      "in_graph": true
+    },
+    "a7.h5->logits": {
+      "score": 840.5968914031982,
+      "in_graph": true
+    },
+    "a3.h7->m4": {
+      "score": 390.7226438522339,
+      "in_graph": true
+    },
+    "m0->a1.h1<k>": {
+      "score": 34.15846252441406,
+      "in_graph": true
+    },
+    "m0->a1.h1<v>": {
+      "score": 34.15846252441406,
+      "in_graph": true
+    },
+    "a1.h1->a5.h0<k>": {
+      "score": 49.685275077819824,
+      "in_graph": true
+    },
+    "a1.h1->a5.h0<v>": {
+      "score": 49.685275077819824,
+      "in_graph": true
+    },
+    "a1.h1->m1": {
+      "score": 49.50426197052002,
+      "in_graph": true
+    },
+    "a0.h9->a2.h4<k>": {
+      "score": 49.77286624908447,
+      "in_graph": true
+    },
+    "a0.h9->a2.h4<v>": {
+      "score": 49.77286624908447,
+      "in_graph": true
+    },
+    "a0.h10->a3.h9<k>": {
+      "score": 80.99570178985596,
+      "in_graph": true
+    },
+    "a0.h10->a3.h9<v>": {
+      "score": 80.99570178985596,
+      "in_graph": true
+    },
+    "a0.h11->a2.h9<q>": {
+      "score": 81.33519554138184,
+      "in_graph": true
+    },
+    "a2.h2->a6.h1<q>": {
+      "score": 80.5933427810669,
+      "in_graph": true
+    },
+    "a0.h9->a3.h5<k>": {
+      "score": 33.99539566040039,
+      "in_graph": true
+    },
+    "a0.h9->a3.h5<v>": {
+      "score": 33.99539566040039,
+      "in_graph": true
+    },
+    "a3.h5->a6.h2<q>": {
+      "score": 112.60911846160889,
+      "in_graph": true
+    },
+    "a0.h8->a2.h4<k>": {
+      "score": 48.90776824951172,
+      "in_graph": true
+    },
+    "a0.h8->a2.h4<v>": {
+      "score": 48.90776824951172,
+      "in_graph": true
+    },
+    "m0->a4.h6<q>": {
+      "score": 114.93987655639648,
+      "in_graph": true
+    },
+    "a0.h5->a5.h6<q>": {
+      "score": 33.88257598876953,
+      "in_graph": true
+    },
+    "a3.h11->m4": {
+      "score": 48.982444763183594,
+      "in_graph": true
+    },
+    "m0->a7.h0<q>": {
+      "score": 63.88815879821777,
+      "in_graph": true
+    },
+    "m1->a4.h6<q>": {
+      "score": 81.47787666320801,
+      "in_graph": true
+    },
+    "input->m3": {
+      "score": 65.46961688995361,
+      "in_graph": true
+    },
+    "a1.h5->a5.h9<k>": {
+      "score": 33.79285430908203,
+      "in_graph": true
+    },
+    "a1.h5->a5.h9<v>": {
+      "score": 33.79285430908203,
+      "in_graph": true
+    },
+    "a5.h9->a6.h4<q>": {
+      "score": 80.80429267883301,
+      "in_graph": true
+    },
+    "a1.h10->a2.h7<k>": {
+      "score": 48.86283302307129,
+      "in_graph": true
+    },
+    "a1.h10->a2.h7<v>": {
+      "score": 48.86283302307129,
+      "in_graph": true
+    },
+    "a2.h7->a3.h1<k>": {
+      "score": 64.18751239776611,
+      "in_graph": true
+    },
+    "a2.h7->a3.h1<v>": {
+      "score": 64.18751239776611,
+      "in_graph": true
+    },
+    "m0->a2.h2<k>": {
+      "score": 33.775794982910156,
+      "in_graph": true
+    },
+    "m0->a2.h2<v>": {
+      "score": 33.775794982910156,
+      "in_graph": true
+    },
+    "a0.h10->a4.h6<q>": {
+      "score": 33.706214904785156,
+      "in_graph": true
+    },
+    "a0.h5->a3.h10<q>": {
+      "score": 65.75584030151367,
+      "in_graph": true
+    },
+    "a3.h10->a5.h0<k>": {
+      "score": 95.86366939544678,
+      "in_graph": true
+    },
+    "a3.h10->a5.h0<v>": {
+      "score": 95.86366939544678,
+      "in_graph": true
+    },
+    "a1.h9->a4.h6<k>": {
+      "score": 96.07601833343506,
+      "in_graph": true
+    },
+    "a1.h9->a4.h6<v>": {
+      "score": 96.07601833343506,
+      "in_graph": true
+    },
+    "input->a0.h4<k>": {
+      "score": 81.71257305145264,
+      "in_graph": true
+    },
+    "input->a0.h4<v>": {
+      "score": 81.71257305145264,
+      "in_graph": true
+    },
+    "a0.h4->a3.h7<k>": {
+      "score": 49.983924865722656,
+      "in_graph": true
+    },
+    "a0.h4->a3.h7<v>": {
+      "score": 49.983924865722656,
+      "in_graph": true
+    },
+    "m0->a1.h0<k>": {
+      "score": 66.62191581726074,
+      "in_graph": true
+    },
+    "m0->a1.h0<v>": {
+      "score": 66.62191581726074,
+      "in_graph": true
+    },
+    "m1->a3.h6<k>": {
+      "score": 79.87306213378906,
+      "in_graph": true
+    },
+    "m1->a3.h6<v>": {
+      "score": 79.87306213378906,
+      "in_graph": true
+    },
+    "a3.h6->a6.h4<q>": {
+      "score": 126.72201728820801,
+      "in_graph": true
+    },
+    "m2->a3.h5<k>": {
+      "score": 33.649322509765625,
+      "in_graph": true
+    },
+    "m2->a3.h5<v>": {
+      "score": 33.649322509765625,
+      "in_graph": true
+    },
+    "m0->a1.h9<k>": {
+      "score": 112.82668590545654,
+      "in_graph": true
+    },
+    "m0->a1.h9<v>": {
+      "score": 112.82668590545654,
+      "in_graph": true
+    },
+    "a1.h9->a4.h6<q>": {
+      "score": 97.1848611831665,
+      "in_graph": true
+    },
+    "a0.h11->a4.h6<q>": {
+      "score": 33.64165496826172,
+      "in_graph": true
+    },
+    "m0->a1.h6<k>": {
+      "score": 64.0128812789917,
+      "in_graph": true
+    },
+    "m0->a1.h6<v>": {
+      "score": 64.0128812789917,
+      "in_graph": true
+    },
+    "a1.h6->m4": {
+      "score": 65.80773544311523,
+      "in_graph": true
+    },
+    "m3->a4.h7<k>": {
+      "score": 66.6602954864502,
+      "in_graph": true
+    },
+    "m3->a4.h7<v>": {
+      "score": 66.6602954864502,
+      "in_graph": true
+    },
+    "a2.h8->m3": {
+      "score": 49.49651050567627,
+      "in_graph": true
+    },
+    "m3->a4.h4<q>": {
+      "score": 49.49651050567627,
+      "in_graph": true
+    },
+    "m2->a4.h6<q>": {
+      "score": 63.78896713256836,
+      "in_graph": true
+    },
+    "a2.h8->a4.h7<k>": {
+      "score": 113.53271198272705,
+      "in_graph": true
+    },
+    "a2.h8->a4.h7<v>": {
+      "score": 113.53271198272705,
+      "in_graph": true
+    },
+    "m2->a4.h2<q>": {
+      "score": 64.9339542388916,
+      "in_graph": true
+    },
+    "a4.h2->m4": {
+      "score": 81.21317863464355,
+      "in_graph": true
+    },
+    "a0.h10->a3.h7<k>": {
+      "score": 65.60347747802734,
+      "in_graph": true
+    },
+    "a0.h10->a3.h7<v>": {
+      "score": 65.60347747802734,
+      "in_graph": true
+    },
+    "m2->a3.h11<k>": {
+      "score": 33.46233367919922,
+      "in_graph": true
+    },
+    "m2->a3.h11<v>": {
+      "score": 33.46233367919922,
+      "in_graph": true
+    },
+    "a3.h11->a7.h7<q>": {
+      "score": 64.98670768737793,
+      "in_graph": true
+    },
+    "m2->a6.h6<q>": {
+      "score": 158.89743041992188,
+      "in_graph": true
+    },
+    "a6.h6->a7.h6<k>": {
+      "score": 235.7610740661621,
+      "in_graph": true
+    },
+    "a6.h6->a7.h6<v>": {
+      "score": 235.7610740661621,
+      "in_graph": true
+    },
+    "a0.h5->a1.h9<q>": {
+      "score": 33.460845947265625,
+      "in_graph": true
+    },
+    "a1.h9->m4": {
+      "score": 48.86789417266846,
+      "in_graph": true
+    },
+    "m2->a5.h4<q>": {
+      "score": 48.50461387634277,
+      "in_graph": true
+    },
+    "m0->a5.h2<q>": {
+      "score": 130.88098621368408,
+      "in_graph": true
+    },
+    "a5.h2->a7.h5<q>": {
+      "score": 370.6979703903198,
+      "in_graph": true
+    },
+    "m5->a6.h0<k>": {
+      "score": 64.41588592529297,
+      "in_graph": true
+    },
+    "m5->a6.h0<v>": {
+      "score": 64.41588592529297,
+      "in_graph": true
+    },
+    "m1->a4.h11<q>": {
+      "score": 33.38872146606445,
+      "in_graph": true
+    },
+    "m0->a3.h0<k>": {
+      "score": 80.0154676437378,
+      "in_graph": true
+    },
+    "m0->a3.h0<v>": {
+      "score": 80.0154676437378,
+      "in_graph": true
+    },
+    "a3.h0->m3": {
+      "score": 95.03226661682129,
+      "in_graph": true
+    },
+    "m3->a5.h9<q>": {
+      "score": 64.4848403930664,
+      "in_graph": true
+    },
+    "a5.h9->a7.h6<k>": {
+      "score": 64.4848403930664,
+      "in_graph": true
+    },
+    "a5.h9->a7.h6<v>": {
+      "score": 64.4848403930664,
+      "in_graph": true
+    },
+    "a0.h4->m2": {
+      "score": 33.37843322753906,
+      "in_graph": true
+    },
+    "a2.h4->a6.h1<q>": {
+      "score": 33.37742233276367,
+      "in_graph": true
+    },
+    "m0->a1.h3<q>": {
+      "score": 94.90090942382812,
+      "in_graph": true
+    },
+    "a1.h3->a2.h5<k>": {
+      "score": 49.96701431274414,
+      "in_graph": true
+    },
+    "a1.h3->a2.h5<v>": {
+      "score": 49.96701431274414,
+      "in_graph": true
+    },
+    "a2.h5->a5.h4<q>": {
+      "score": 144.65417861938477,
+      "in_graph": true
+    },
+    "m1->a3.h4<k>": {
+      "score": 49.451398849487305,
+      "in_graph": true
+    },
+    "m1->a3.h4<v>": {
+      "score": 49.451398849487305,
+      "in_graph": true
+    },
+    "a3.h4->m3": {
+      "score": 79.8969955444336,
+      "in_graph": true
+    },
+    "a2.h2->a5.h4<k>": {
+      "score": 48.63978672027588,
+      "in_graph": true
+    },
+    "a2.h2->a5.h4<v>": {
+      "score": 48.63978672027588,
+      "in_graph": true
+    },
+    "m1->a5.h2<q>": {
+      "score": 80.42605018615723,
+      "in_graph": true
+    },
+    "m2->a3.h4<q>": {
+      "score": 79.36178779602051,
+      "in_graph": true
+    },
+    "a3.h4->a7.h6<k>": {
+      "score": 64.2437105178833,
+      "in_graph": true
+    },
+    "a3.h4->a7.h6<v>": {
+      "score": 64.2437105178833,
+      "in_graph": true
+    },
+    "a0.h10->a5.h2<q>": {
+      "score": 33.23664093017578,
+      "in_graph": true
+    },
+    "a4.h11->a5.h5<k>": {
+      "score": 33.21889877319336,
+      "in_graph": true
+    },
+    "a4.h11->a5.h5<v>": {
+      "score": 33.21889877319336,
+      "in_graph": true
+    },
+    "a5.h5->a7.h6<k>": {
+      "score": 110.47679615020752,
+      "in_graph": true
+    },
+    "a5.h5->a7.h6<v>": {
+      "score": 110.47679615020752,
+      "in_graph": true
+    },
+    "m2->a5.h2<q>": {
+      "score": 33.19648361206055,
+      "in_graph": true
+    },
+    "m1->a2.h2<k>": {
+      "score": 49.2803897857666,
+      "in_graph": true
+    },
+    "m1->a2.h2<v>": {
+      "score": 49.2803897857666,
+      "in_graph": true
+    },
+    "a1.h0->a5.h0<k>": {
+      "score": 33.167015075683594,
+      "in_graph": true
+    },
+    "a1.h0->a5.h0<v>": {
+      "score": 33.167015075683594,
+      "in_graph": true
+    },
+    "a2.h8->a5.h0<k>": {
+      "score": 33.1490592956543,
+      "in_graph": true
+    },
+    "a2.h8->a5.h0<v>": {
+      "score": 33.1490592956543,
+      "in_graph": true
+    },
+    "a2.h2->logits": {
+      "score": 250.58078002929688,
+      "in_graph": true
+    },
+    "a0.h6->a2.h8<q>": {
+      "score": 48.702473640441895,
+      "in_graph": true
+    },
+    "a1.h0->a5.h4<q>": {
+      "score": 63.881072998046875,
+      "in_graph": true
+    },
+    "a1.h4->a4.h6<q>": {
+      "score": 49.641319274902344,
+      "in_graph": true
+    },
+    "a1.h3->logits": {
+      "score": 64.86706447601318,
+      "in_graph": true
+    },
+    "a0.h1->a1.h5<k>": {
+      "score": 97.38832473754883,
+      "in_graph": true
+    },
+    "a0.h1->a1.h5<v>": {
+      "score": 97.38832473754883,
+      "in_graph": true
+    },
+    "a0.h6->m5": {
+      "score": 33.054359436035156,
+      "in_graph": true
+    },
+    "a0.h9->a2.h9<k>": {
+      "score": 33.039955139160156,
+      "in_graph": true
+    },
+    "a0.h9->a2.h9<v>": {
+      "score": 33.039955139160156,
+      "in_graph": true
+    },
+    "a1.h4->a7.h6<k>": {
+      "score": 95.69792652130127,
+      "in_graph": true
+    },
+    "a1.h4->a7.h6<v>": {
+      "score": 95.69792652130127,
+      "in_graph": true
+    },
+    "a1.h8->a3.h10<q>": {
+      "score": 33.03301239013672,
+      "in_graph": true
+    },
+    "a1.h8->a3.h11<k>": {
+      "score": 33.01881790161133,
+      "in_graph": true
+    },
+    "a1.h8->a3.h11<v>": {
+      "score": 33.01881790161133,
+      "in_graph": true
+    },
+    "a3.h9->a5.h2<k>": {
+      "score": 33.01647186279297,
+      "in_graph": true
+    },
+    "a3.h9->a5.h2<v>": {
+      "score": 33.01647186279297,
+      "in_graph": true
+    },
+    "a0.h1->a7.h7<q>": {
+      "score": 32.95734405517578,
+      "in_graph": true
+    },
+    "a2.h0->a3.h1<k>": {
+      "score": 32.931026458740234,
+      "in_graph": true
+    },
+    "a2.h0->a3.h1<v>": {
+      "score": 32.931026458740234,
+      "in_graph": true
+    },
+    "a0.h6->a1.h6<q>": {
+      "score": 32.860565185546875,
+      "in_graph": true
+    },
+    "a0.h7->m0": {
+      "score": 110.1840591430664,
+      "in_graph": true
+    },
+    "m2->a4.h7<q>": {
+      "score": 64.35515975952148,
+      "in_graph": true
+    },
+    "m1->a5.h3<q>": {
+      "score": 32.829002380371094,
+      "in_graph": true
+    },
+    "a5.h3->a7.h5<q>": {
+      "score": 221.22254276275635,
+      "in_graph": true
+    },
+    "a0.h10->a1.h9<q>": {
+      "score": 47.89657497406006,
+      "in_graph": true
+    },
+    "a0.h5->a2.h7<k>": {
+      "score": 63.27841854095459,
+      "in_graph": true
+    },
+    "a0.h5->a2.h7<v>": {
+      "score": 63.27841854095459,
+      "in_graph": true
+    },
+    "a0.h10->a1.h8<k>": {
+      "score": 32.807525634765625,
+      "in_graph": true
+    },
+    "a0.h10->a1.h8<v>": {
+      "score": 32.807525634765625,
+      "in_graph": true
+    },
+    "a0.h5->a3.h3<k>": {
+      "score": 79.56516361236572,
+      "in_graph": true
+    },
+    "a0.h5->a3.h3<v>": {
+      "score": 79.56516361236572,
+      "in_graph": true
+    },
+    "a3.h3->a6.h1<q>": {
+      "score": 111.26957416534424,
+      "in_graph": true
+    },
+    "m0->a3.h9<q>": {
+      "score": 124.65320014953613,
+      "in_graph": true
+    },
+    "a3.h9->a5.h4<q>": {
+      "score": 216.40908527374268,
+      "in_graph": true
+    },
+    "a1.h0->m2": {
+      "score": 32.77095413208008,
+      "in_graph": true
+    },
+    "m2->a3.h6<k>": {
+      "score": 48.081918716430664,
+      "in_graph": true
+    },
+    "m2->a3.h6<v>": {
+      "score": 48.081918716430664,
+      "in_graph": true
+    },
+    "a2.h2->m2": {
+      "score": 94.72556209564209,
+      "in_graph": true
+    },
+    "a0.h10->a1.h3<q>": {
+      "score": 48.12898349761963,
+      "in_graph": true
+    },
+    "input->a0.h11<q>": {
+      "score": 93.4980821609497,
+      "in_graph": true
+    },
+    "a0.h11->a1.h7<q>": {
+      "score": 32.7537956237793,
+      "in_graph": true
+    },
+    "input->m2": {
+      "score": 170.28585052490234,
+      "in_graph": true
+    },
+    "a1.h4->a5.h2<q>": {
+      "score": 32.71846389770508,
+      "in_graph": true
+    },
+    "a0.h10->a5.h8<k>": {
+      "score": 32.696529388427734,
+      "in_graph": true
+    },
+    "a0.h10->a5.h8<v>": {
+      "score": 32.696529388427734,
+      "in_graph": true
+    },
+    "a5.h8->a7.h6<k>": {
+      "score": 63.46718406677246,
+      "in_graph": true
+    },
+    "a5.h8->a7.h6<v>": {
+      "score": 63.46718406677246,
+      "in_graph": true
+    },
+    "a0.h11->a1.h9<k>": {
+      "score": 32.67845153808594,
+      "in_graph": true
+    },
+    "a0.h11->a1.h9<v>": {
+      "score": 32.67845153808594,
+      "in_graph": true
+    },
+    "a0.h9->a1.h6<k>": {
+      "score": 48.314818382263184,
+      "in_graph": true
+    },
+    "a0.h9->a1.h6<v>": {
+      "score": 48.314818382263184,
+      "in_graph": true
+    },
+    "input->a0.h4<q>": {
+      "score": 32.642822265625,
+      "in_graph": true
+    },
+    "a0.h9->a2.h10<k>": {
+      "score": 47.75650501251221,
+      "in_graph": true
+    },
+    "a0.h9->a2.h10<v>": {
+      "score": 47.75650501251221,
+      "in_graph": true
+    },
+    "a2.h10->a4.h6<q>": {
+      "score": 47.8547306060791,
+      "in_graph": true
+    },
+    "a0.h11->a5.h2<q>": {
+      "score": 32.62554168701172,
+      "in_graph": true
+    },
+    "a4.h11->a5.h2<q>": {
+      "score": 32.57914352416992,
+      "in_graph": true
+    },
+    "a0.h11->a5.h4<q>": {
+      "score": 32.55980682373047,
+      "in_graph": true
+    },
+    "m0->a4.h2<k>": {
+      "score": 32.558448791503906,
+      "in_graph": true
+    },
+    "m0->a4.h2<v>": {
+      "score": 32.558448791503906,
+      "in_graph": true
+    },
+    "a0.h5->a3.h9<k>": {
+      "score": 47.85486888885498,
+      "in_graph": true
+    },
+    "a0.h5->a3.h9<v>": {
+      "score": 47.85486888885498,
+      "in_graph": true
+    },
+    "m0->a5.h3<q>": {
+      "score": 80.35867214202881,
+      "in_graph": true
+    },
+    "a0.h11->a2.h5<q>": {
+      "score": 78.84609603881836,
+      "in_graph": true
+    },
+    "a2.h5->a4.h7<k>": {
+      "score": 32.5295524597168,
+      "in_graph": true
+    },
+    "a2.h5->a4.h7<v>": {
+      "score": 32.5295524597168,
+      "in_graph": true
+    },
+    "a0.h6->a2.h2<q>": {
+      "score": 48.45460891723633,
+      "in_graph": true
+    },
+    "a3.h11->a7.h5<q>": {
+      "score": 79.26670169830322,
+      "in_graph": true
+    },
+    "a4.h6->a5.h0<k>": {
+      "score": 78.47577953338623,
+      "in_graph": true
+    },
+    "a4.h6->a5.h0<v>": {
+      "score": 78.47577953338623,
+      "in_graph": true
+    },
+    "m1->a2.h5<k>": {
+      "score": 110.91550254821777,
+      "in_graph": true
+    },
+    "m1->a2.h5<v>": {
+      "score": 110.91550254821777,
+      "in_graph": true
+    },
+    "a0.h10->a5.h3<q>": {
+      "score": 32.4532470703125,
+      "in_graph": true
+    },
+    "a0.h9->a1.h7<q>": {
+      "score": 32.42887878417969,
+      "in_graph": true
+    },
+    "a1.h7->m1": {
+      "score": 63.16629123687744,
+      "in_graph": true
+    },
+    "m1->a3.h11<k>": {
+      "score": 62.87967109680176,
+      "in_graph": true
+    },
+    "m1->a3.h11<v>": {
+      "score": 62.87967109680176,
+      "in_graph": true
+    },
+    "a1.h0->logits": {
+      "score": 126.22801494598389,
+      "in_graph": true
+    },
+    "a1.h4->a4.h6<k>": {
+      "score": 32.4079704284668,
+      "in_graph": true
+    },
+    "a1.h4->a4.h6<v>": {
+      "score": 32.4079704284668,
+      "in_graph": true
+    },
+    "a1.h4->a5.h2<k>": {
+      "score": 32.396514892578125,
+      "in_graph": true
+    },
+    "a1.h4->a5.h2<v>": {
+      "score": 32.396514892578125,
+      "in_graph": true
+    },
+    "a2.h2->a5.h0<k>": {
+      "score": 32.39047622680664,
+      "in_graph": true
+    },
+    "a2.h2->a5.h0<v>": {
+      "score": 32.39047622680664,
+      "in_graph": true
+    },
+    "input->a6.h4<q>": {
+      "score": 32.384483337402344,
+      "in_graph": true
+    },
+    "a0.h11->a1.h2<k>": {
+      "score": 47.57797908782959,
+      "in_graph": true
+    },
+    "a0.h11->a1.h2<v>": {
+      "score": 47.57797908782959,
+      "in_graph": true
+    },
+    "a1.h2->a6.h7<q>": {
+      "score": 62.504258155822754,
+      "in_graph": true
+    },
+    "a6.h7->logits": {
+      "score": 700.0936918258667,
+      "in_graph": true
+    },
+    "m2->a5.h3<q>": {
+      "score": 32.360557556152344,
+      "in_graph": true
+    },
+    "m1->a3.h6<q>": {
+      "score": 48.43510818481445,
+      "in_graph": true
+    },
+    "a3.h6->a7.h6<k>": {
+      "score": 127.08727359771729,
+      "in_graph": true
+    },
+    "a3.h6->a7.h6<v>": {
+      "score": 127.08727359771729,
+      "in_graph": true
+    },
+    "a1.h9->a6.h1<k>": {
+      "score": 32.33545684814453,
+      "in_graph": true
+    },
+    "a1.h9->a6.h1<v>": {
+      "score": 32.33545684814453,
+      "in_graph": true
+    },
+    "a6.h1->a7.h6<k>": {
+      "score": 94.11895275115967,
+      "in_graph": true
+    },
+    "a6.h1->a7.h6<v>": {
+      "score": 94.11895275115967,
+      "in_graph": true
+    },
+    "a1.h9->a3.h3<k>": {
+      "score": 78.34694957733154,
+      "in_graph": true
+    },
+    "a1.h9->a3.h3<v>": {
+      "score": 78.34694957733154,
+      "in_graph": true
+    },
+    "m2->a3.h10<q>": {
+      "score": 94.65461730957031,
+      "in_graph": true
+    },
+    "a3.h10->a5.h10<k>": {
+      "score": 110.73298072814941,
+      "in_graph": true
+    },
+    "a3.h10->a5.h10<v>": {
+      "score": 110.73298072814941,
+      "in_graph": true
+    },
+    "input->a7.h7<q>": {
+      "score": 32.30683517456055,
+      "in_graph": true
+    },
+    "a0.h5->a2.h0<k>": {
+      "score": 32.299861907958984,
+      "in_graph": true
+    },
+    "a0.h5->a2.h0<v>": {
+      "score": 32.299861907958984,
+      "in_graph": true
+    },
+    "a2.h0->a5.h4<q>": {
+      "score": 32.299861907958984,
+      "in_graph": true
+    },
+    "a0.h6->a1.h0<q>": {
+      "score": 63.97960662841797,
+      "in_graph": true
+    },
+    "a3.h1->a6.h1<q>": {
+      "score": 187.0525360107422,
+      "in_graph": true
+    },
+    "a0.h9->a1.h8<k>": {
+      "score": 63.39207363128662,
+      "in_graph": true
+    },
+    "a0.h9->a1.h8<v>": {
+      "score": 63.39207363128662,
+      "in_graph": true
+    },
+    "a1.h8->a5.h9<k>": {
+      "score": 63.15212440490723,
+      "in_graph": true
+    },
+    "a1.h8->a5.h9<v>": {
+      "score": 63.15212440490723,
+      "in_graph": true
+    },
+    "a0.h5->a4.h0<k>": {
+      "score": 32.24065399169922,
+      "in_graph": true
+    },
+    "a0.h5->a4.h0<v>": {
+      "score": 32.24065399169922,
+      "in_graph": true
+    },
+    "a4.h0->a5.h2<k>": {
+      "score": 32.24065399169922,
+      "in_graph": true
+    },
+    "a4.h0->a5.h2<v>": {
+      "score": 32.24065399169922,
+      "in_graph": true
+    },
+    "m2->a5.h2<k>": {
+      "score": 62.969882011413574,
+      "in_graph": true
+    },
+    "m2->a5.h2<v>": {
+      "score": 62.969882011413574,
+      "in_graph": true
+    },
+    "a0.h10->a4.h11<q>": {
+      "score": 32.231815338134766,
+      "in_graph": true
+    },
+    "m0->a2.h3<k>": {
+      "score": 32.20772933959961,
+      "in_graph": true
+    },
+    "m0->a2.h3<v>": {
+      "score": 32.20772933959961,
+      "in_graph": true
+    },
+    "a2.h3->a5.h0<k>": {
+      "score": 62.67831611633301,
+      "in_graph": true
+    },
+    "a2.h3->a5.h0<v>": {
+      "score": 62.67831611633301,
+      "in_graph": true
+    },
+    "a1.h9->m2": {
+      "score": 62.508742332458496,
+      "in_graph": true
+    },
+    "a0.h5->a1.h10<k>": {
+      "score": 32.17308807373047,
+      "in_graph": true
+    },
+    "a0.h5->a1.h10<v>": {
+      "score": 32.17308807373047,
+      "in_graph": true
+    },
+    "a1.h10->m4": {
+      "score": 32.17308807373047,
+      "in_graph": true
+    },
+    "a0.h9->a2.h11<k>": {
+      "score": 32.165916442871094,
+      "in_graph": true
+    },
+    "a0.h9->a2.h11<v>": {
+      "score": 32.165916442871094,
+      "in_graph": true
+    },
+    "a2.h11->a6.h9<q>": {
+      "score": 32.165916442871094,
+      "in_graph": true
+    },
+    "m0->a3.h11<q>": {
+      "score": 32.162166595458984,
+      "in_graph": true
+    },
+    "a3.h11->m3": {
+      "score": 78.53448867797852,
+      "in_graph": true
+    },
+    "a0.h1->a4.h6<q>": {
+      "score": 32.13030242919922,
+      "in_graph": true
+    },
+    "a2.h1->m3": {
+      "score": 32.12175750732422,
+      "in_graph": true
+    },
+    "a0.h9->a2.h8<k>": {
+      "score": 47.78337574005127,
+      "in_graph": true
+    },
+    "a0.h9->a2.h8<v>": {
+      "score": 47.78337574005127,
+      "in_graph": true
+    },
+    "a1.h5->a3.h9<q>": {
+      "score": 32.082279205322266,
+      "in_graph": true
+    },
+    "input->a5.h3<k>": {
+      "score": 32.076499938964844,
+      "in_graph": true
+    },
+    "input->a5.h3<v>": {
+      "score": 32.076499938964844,
+      "in_graph": true
+    },
+    "a5.h3->a7.h6<k>": {
+      "score": 32.076499938964844,
+      "in_graph": true
+    },
+    "a5.h3->a7.h6<v>": {
+      "score": 32.076499938964844,
+      "in_graph": true
+    },
+    "m0->a5.h7<k>": {
+      "score": 32.072811126708984,
+      "in_graph": true
+    },
+    "m0->a5.h7<v>": {
+      "score": 32.072811126708984,
+      "in_graph": true
+    },
+    "a0.h9->a1.h4<q>": {
+      "score": 32.0717887878418,
+      "in_graph": true
+    },
+    "m0->a3.h2<q>": {
+      "score": 47.0735559463501,
+      "in_graph": true
+    },
+    "a3.h2->a4.h7<k>": {
+      "score": 93.74247074127197,
+      "in_graph": true
+    },
+    "a3.h2->a4.h7<v>": {
+      "score": 93.74247074127197,
+      "in_graph": true
+    },
+    "a2.h8->a5.h2<k>": {
+      "score": 32.05207061767578,
+      "in_graph": true
+    },
+    "a2.h8->a5.h2<v>": {
+      "score": 32.05207061767578,
+      "in_graph": true
+    },
+    "a0.h11->a4.h6<k>": {
+      "score": 32.044437408447266,
+      "in_graph": true
+    },
+    "a0.h11->a4.h6<v>": {
+      "score": 32.044437408447266,
+      "in_graph": true
+    },
+    "a4.h6->a5.h10<k>": {
+      "score": 63.33949851989746,
+      "in_graph": true
+    },
+    "a4.h6->a5.h10<v>": {
+      "score": 63.33949851989746,
+      "in_graph": true
+    },
+    "a0.h5->a5.h2<k>": {
+      "score": 47.32650947570801,
+      "in_graph": true
+    },
+    "a0.h5->a5.h2<v>": {
+      "score": 47.32650947570801,
+      "in_graph": true
+    },
+    "a0.h0->m0": {
+      "score": 62.93014907836914,
+      "in_graph": true
+    },
+    "a0.h11->m1": {
+      "score": 63.03094005584717,
+      "in_graph": true
+    },
+    "m0->a4.h3<q>": {
+      "score": 32.02047348022461,
+      "in_graph": true
+    },
+    "a4.h3->a5.h0<k>": {
+      "score": 32.02047348022461,
+      "in_graph": true
+    },
+    "a4.h3->a5.h0<v>": {
+      "score": 32.02047348022461,
+      "in_graph": true
+    },
+    "a3.h7->m3": {
+      "score": 173.2232151031494,
+      "in_graph": true
+    },
+    "a0.h3->a1.h4<q>": {
+      "score": 32.002525329589844,
+      "in_graph": true
+    },
+    "m1->a2.h6<k>": {
+      "score": 31.99857521057129,
+      "in_graph": true
+    },
+    "m1->a2.h6<v>": {
+      "score": 31.99857521057129,
+      "in_graph": true
+    },
+    "a2.h6->a6.h1<q>": {
+      "score": 47.192026138305664,
+      "in_graph": true
+    },
+    "a0.h11->a1.h11<k>": {
+      "score": 93.04341697692871,
+      "in_graph": true
+    },
+    "a0.h11->a1.h11<v>": {
+      "score": 93.04341697692871,
+      "in_graph": true
+    },
+    "a1.h11->a5.h2<q>": {
+      "score": 31.99835205078125,
+      "in_graph": true
+    },
+    "a0.h11->a4.h7<q>": {
+      "score": 62.52998447418213,
+      "in_graph": true
+    },
+    "a3.h10->a5.h5<k>": {
+      "score": 31.977466583251953,
+      "in_graph": true
+    },
+    "a3.h10->a5.h5<v>": {
+      "score": 31.977466583251953,
+      "in_graph": true
+    },
+    "a2.h5->a7.h6<k>": {
+      "score": 31.95713233947754,
+      "in_graph": true
+    },
+    "a2.h5->a7.h6<v>": {
+      "score": 31.95713233947754,
+      "in_graph": true
+    },
+    "a0.h5->a4.h8<k>": {
+      "score": 31.934789657592773,
+      "in_graph": true
+    },
+    "a0.h5->a4.h8<v>": {
+      "score": 31.934789657592773,
+      "in_graph": true
+    },
+    "a4.h8->m4": {
+      "score": 47.11562728881836,
+      "in_graph": true
+    },
+    "a2.h8->a3.h10<k>": {
+      "score": 62.166147232055664,
+      "in_graph": true
+    },
+    "a2.h8->a3.h10<v>": {
+      "score": 62.166147232055664,
+      "in_graph": true
+    },
+    "a3.h10->m4": {
+      "score": 62.51715278625488,
+      "in_graph": true
+    },
+    "m4->a5.h7<k>": {
+      "score": 31.865886688232422,
+      "in_graph": true
+    },
+    "m4->a5.h7<v>": {
+      "score": 31.865886688232422,
+      "in_graph": true
+    },
+    "m2->a3.h6<q>": {
+      "score": 31.864803314208984,
+      "in_graph": true
+    },
+    "a0.h10->a3.h6<k>": {
+      "score": 31.860931396484375,
+      "in_graph": true
+    },
+    "a0.h10->a3.h6<v>": {
+      "score": 31.860931396484375,
+      "in_graph": true
+    },
+    "a3.h6->a6.h1<q>": {
+      "score": 31.860931396484375,
+      "in_graph": true
+    },
+    "a2.h8->a4.h0<k>": {
+      "score": 31.85321044921875,
+      "in_graph": true
+    },
+    "a2.h8->a4.h0<v>": {
+      "score": 31.85321044921875,
+      "in_graph": true
+    },
+    "a4.h0->a7.h0<q>": {
+      "score": 47.484344482421875,
+      "in_graph": true
+    },
+    "a0.h4->a1.h7<q>": {
+      "score": 31.8463077545166,
+      "in_graph": true
+    },
+    "input->a6.h1<q>": {
+      "score": 31.829471588134766,
+      "in_graph": true
+    },
+    "a0.h5->a1.h5<k>": {
+      "score": 78.23763942718506,
+      "in_graph": true
+    },
+    "a0.h5->a1.h5<v>": {
+      "score": 78.23763942718506,
+      "in_graph": true
+    },
+    "a1.h3->a3.h7<k>": {
+      "score": 46.873385429382324,
+      "in_graph": true
+    },
+    "a1.h3->a3.h7<v>": {
+      "score": 46.873385429382324,
+      "in_graph": true
+    },
+    "a0.h8->a4.h6<q>": {
+      "score": 31.79510498046875,
+      "in_graph": true
+    },
+    "a0.h5->a2.h6<k>": {
+      "score": 46.97588539123535,
+      "in_graph": true
+    },
+    "a0.h5->a2.h6<v>": {
+      "score": 46.97588539123535,
+      "in_graph": true
+    },
+    "a2.h6->a6.h9<q>": {
+      "score": 31.782434463500977,
+      "in_graph": true
+    },
+    "a0.h9->a1.h7<k>": {
+      "score": 31.76326560974121,
+      "in_graph": true
+    },
+    "a0.h9->a1.h7<v>": {
+      "score": 31.76326560974121,
+      "in_graph": true
+    },
+    "a1.h7->a3.h4<k>": {
+      "score": 31.76326560974121,
+      "in_graph": true
+    },
+    "a1.h7->a3.h4<v>": {
+      "score": 31.76326560974121,
+      "in_graph": true
+    },
+    "a3.h4->a6.h2<q>": {
+      "score": 47.33116436004639,
+      "in_graph": true
+    },
+    "m0->a3.h8<k>": {
+      "score": 46.77549743652344,
+      "in_graph": true
+    },
+    "m0->a3.h8<v>": {
+      "score": 46.77549743652344,
+      "in_graph": true
+    },
+    "a3.h8->a5.h0<k>": {
+      "score": 46.77549743652344,
+      "in_graph": true
+    },
+    "a3.h8->a5.h0<v>": {
+      "score": 46.77549743652344,
+      "in_graph": true
+    },
+    "input->a0.h2<k>": {
+      "score": 108.39019107818604,
+      "in_graph": true
+    },
+    "input->a0.h2<v>": {
+      "score": 108.39019107818604,
+      "in_graph": true
+    },
+    "a0.h2->a1.h8<k>": {
+      "score": 31.736108779907227,
+      "in_graph": true
+    },
+    "a0.h2->a1.h8<v>": {
+      "score": 31.736108779907227,
+      "in_graph": true
+    },
+    "m4->a6.h6<q>": {
+      "score": 31.733068466186523,
+      "in_graph": true
+    },
+    "m1->a6.h1<q>": {
+      "score": 31.729297637939453,
+      "in_graph": true
+    },
+    "m0->a6.h8<q>": {
+      "score": 108.1001558303833,
+      "in_graph": true
+    },
+    "a6.h8->logits": {
+      "score": 533.224702835083,
+      "in_graph": true
+    },
+    "a1.h4->a3.h3<k>": {
+      "score": 62.53369140625,
+      "in_graph": true
+    },
+    "a1.h4->a3.h3<v>": {
+      "score": 62.53369140625,
+      "in_graph": true
+    },
+    "a0.h6->a1.h6<k>": {
+      "score": 62.164039611816406,
+      "in_graph": true
+    },
+    "a0.h6->a1.h6<v>": {
+      "score": 62.164039611816406,
+      "in_graph": true
+    },
+    "a2.h4->a7.h9<k>": {
+      "score": 31.68303871154785,
+      "in_graph": true
+    },
+    "a2.h4->a7.h9<v>": {
+      "score": 31.68303871154785,
+      "in_graph": true
+    },
+    "m1->a3.h2<q>": {
+      "score": 31.658288955688477,
+      "in_graph": true
+    },
+    "m1->a4.h6<k>": {
+      "score": 31.65439796447754,
+      "in_graph": true
+    },
+    "m1->a4.h6<v>": {
+      "score": 31.65439796447754,
+      "in_graph": true
+    },
+    "a0.h1->m2": {
+      "score": 31.63521957397461,
+      "in_graph": true
+    },
+    "a0.h5->a4.h9<k>": {
+      "score": 31.615814208984375,
+      "in_graph": true
+    },
+    "a0.h5->a4.h9<v>": {
+      "score": 31.615814208984375,
+      "in_graph": true
+    },
+    "a4.h9->a7.h5<q>": {
+      "score": 31.615814208984375,
+      "in_graph": true
+    },
+    "a3.h3->a6.h9<q>": {
+      "score": 62.253342628479004,
+      "in_graph": true
+    },
+    "a0.h0->a5.h2<q>": {
+      "score": 31.603023529052734,
+      "in_graph": true
+    },
+    "a1.h5->a3.h5<k>": {
+      "score": 31.594280242919922,
+      "in_graph": true
+    },
+    "a1.h5->a3.h5<v>": {
+      "score": 31.594280242919922,
+      "in_graph": true
+    },
+    "a0.h5->a2.h1<q>": {
+      "score": 31.582721710205078,
+      "in_graph": true
+    },
+    "input->a3.h3<k>": {
+      "score": 31.579065322875977,
+      "in_graph": true
+    },
+    "input->a3.h3<v>": {
+      "score": 31.579065322875977,
+      "in_graph": true
+    },
+    "a0.h8->a5.h2<q>": {
+      "score": 31.570758819580078,
+      "in_graph": true
+    },
+    "a3.h0->a6.h9<q>": {
+      "score": 31.569345474243164,
+      "in_graph": true
+    },
+    "a0.h9->a3.h0<k>": {
+      "score": 46.57685661315918,
+      "in_graph": true
+    },
+    "a0.h9->a3.h0<v>": {
+      "score": 46.57685661315918,
+      "in_graph": true
+    },
+    "a0.h5->a2.h8<k>": {
+      "score": 31.549922943115234,
+      "in_graph": true
+    },
+    "a0.h5->a2.h8<v>": {
+      "score": 31.549922943115234,
+      "in_graph": true
+    },
+    "a0.h5->a1.h7<k>": {
+      "score": 46.687806129455566,
+      "in_graph": true
+    },
+    "a0.h5->a1.h7<v>": {
+      "score": 46.687806129455566,
+      "in_graph": true
+    },
+    "a1.h7->m2": {
+      "score": 31.547964096069336,
+      "in_graph": true
+    },
+    "a3.h7->a4.h7<k>": {
+      "score": 92.87507247924805,
+      "in_graph": true
+    },
+    "a3.h7->a4.h7<v>": {
+      "score": 92.87507247924805,
+      "in_graph": true
+    },
+    "a0.h3->a3.h9<k>": {
+      "score": 46.83965301513672,
+      "in_graph": true
+    },
+    "a0.h3->a3.h9<v>": {
+      "score": 46.83965301513672,
+      "in_graph": true
+    },
+    "a0.h2->m0": {
+      "score": 46.62065505981445,
+      "in_graph": true
+    },
+    "a1.h4->a3.h9<k>": {
+      "score": 31.508581161499023,
+      "in_graph": true
+    },
+    "a1.h4->a3.h9<v>": {
+      "score": 31.508581161499023,
+      "in_graph": true
+    },
+    "a0.h6->a3.h9<q>": {
+      "score": 46.758605003356934,
+      "in_graph": true
+    },
+    "a0.h10->a3.h6<q>": {
+      "score": 31.49749183654785,
+      "in_graph": true
+    },
+    "m1->a5.h7<k>": {
+      "score": 31.480789184570312,
+      "in_graph": true
+    },
+    "m1->a5.h7<v>": {
+      "score": 31.480789184570312,
+      "in_graph": true
+    },
+    "a0.h1->a1.h0<q>": {
+      "score": 61.68443489074707,
+      "in_graph": true
+    },
+    "a0.h8->a1.h5<k>": {
+      "score": 62.0974702835083,
+      "in_graph": true
+    },
+    "a0.h8->a1.h5<v>": {
+      "score": 62.0974702835083,
+      "in_graph": true
+    },
+    "a0.h9->a1.h11<k>": {
+      "score": 61.69779300689697,
+      "in_graph": true
+    },
+    "a0.h9->a1.h11<v>": {
+      "score": 61.69779300689697,
+      "in_graph": true
+    },
+    "a1.h11->m2": {
+      "score": 46.80266189575195,
+      "in_graph": true
+    },
+    "a0.h3->a1.h7<q>": {
+      "score": 46.85630798339844,
+      "in_graph": true
+    },
+    "a0.h8->a1.h9<q>": {
+      "score": 107.2429141998291,
+      "in_graph": true
+    },
+    "a0.h11->a1.h10<k>": {
+      "score": 92.72863101959229,
+      "in_graph": true
+    },
+    "a0.h11->a1.h10<v>": {
+      "score": 92.72863101959229,
+      "in_graph": true
+    },
+    "a1.h10->a5.h2<q>": {
+      "score": 46.42626667022705,
+      "in_graph": true
+    },
+    "a1.h8->a3.h5<k>": {
+      "score": 31.381988525390625,
+      "in_graph": true
+    },
+    "a1.h8->a3.h5<v>": {
+      "score": 31.381988525390625,
+      "in_graph": true
+    },
+    "m1->a3.h11<q>": {
+      "score": 31.378259658813477,
+      "in_graph": true
+    },
+    "m0->a5.h8<k>": {
+      "score": 31.337360382080078,
+      "in_graph": true
+    },
+    "m0->a5.h8<v>": {
+      "score": 31.337360382080078,
+      "in_graph": true
+    },
+    "a1.h6->m2": {
+      "score": 46.509090423583984,
+      "in_graph": true
+    },
+    "a0.h9->a1.h2<k>": {
+      "score": 31.3258113861084,
+      "in_graph": true
+    },
+    "a0.h9->a1.h2<v>": {
+      "score": 31.3258113861084,
+      "in_graph": true
+    },
+    "a2.h4->a6.h9<q>": {
+      "score": 46.93504333496094,
+      "in_graph": true
+    },
+    "a3.h7->a5.h5<k>": {
+      "score": 76.91049671173096,
+      "in_graph": true
+    },
+    "a3.h7->a5.h5<v>": {
+      "score": 76.91049671173096,
+      "in_graph": true
+    },
+    "a0.h11->a2.h3<q>": {
+      "score": 61.64119529724121,
+      "in_graph": true
+    },
+    "a2.h3->a7.h5<q>": {
+      "score": 31.281972885131836,
+      "in_graph": true
+    },
+    "a1.h10->a5.h3<q>": {
+      "score": 31.2725887298584,
+      "in_graph": true
+    },
+    "m3->a5.h10<k>": {
+      "score": 46.84979057312012,
+      "in_graph": true
+    },
+    "m3->a5.h10<v>": {
+      "score": 46.84979057312012,
+      "in_graph": true
+    },
+    "a0.h11->a2.h4<q>": {
+      "score": 46.29621505737305,
+      "in_graph": true
+    },
+    "input->a4.h0<k>": {
+      "score": 31.26226806640625,
+      "in_graph": true
+    },
+    "input->a4.h0<v>": {
+      "score": 31.26226806640625,
+      "in_graph": true
+    },
+    "input->a3.h6<k>": {
+      "score": 31.255542755126953,
+      "in_graph": true
+    },
+    "input->a3.h6<v>": {
+      "score": 31.255542755126953,
+      "in_graph": true
+    },
+    "a3.h6->a7.h5<q>": {
+      "score": 31.255542755126953,
+      "in_graph": true
+    },
+    "a0.h6->a5.h4<k>": {
+      "score": 31.231094360351562,
+      "in_graph": true
+    },
+    "a0.h6->a5.h4<v>": {
+      "score": 31.231094360351562,
+      "in_graph": true
+    },
+    "a0.h11->a3.h6<q>": {
+      "score": 46.82318115234375,
+      "in_graph": true
+    },
+    "m3->a6.h11<k>": {
+      "score": 31.20823097229004,
+      "in_graph": true
+    },
+    "m3->a6.h11<v>": {
+      "score": 31.20823097229004,
+      "in_graph": true
+    },
+    "a6.h11->a7.h6<k>": {
+      "score": 46.36971950531006,
+      "in_graph": true
+    },
+    "a6.h11->a7.h6<v>": {
+      "score": 46.36971950531006,
+      "in_graph": true
+    },
+    "a0.h11->a1.h3<q>": {
+      "score": 31.203826904296875,
+      "in_graph": true
+    },
+    "a1.h3->a2.h8<k>": {
+      "score": 46.678091049194336,
+      "in_graph": true
+    },
+    "a1.h3->a2.h8<v>": {
+      "score": 46.678091049194336,
+      "in_graph": true
+    },
+    "m2->a5.h10<k>": {
+      "score": 31.192668914794922,
+      "in_graph": true
+    },
+    "m2->a5.h10<v>": {
+      "score": 31.192668914794922,
+      "in_graph": true
+    },
+    "m0->a4.h3<k>": {
+      "score": 31.180805206298828,
+      "in_graph": true
+    },
+    "m0->a4.h3<v>": {
+      "score": 31.180805206298828,
+      "in_graph": true
+    },
+    "a0.h8->a1.h4<q>": {
+      "score": 31.172204971313477,
+      "in_graph": true
+    },
+    "a0.h5->m3": {
+      "score": 31.15524673461914,
+      "in_graph": true
+    },
+    "a1.h8->a6.h1<k>": {
+      "score": 31.1544246673584,
+      "in_graph": true
+    },
+    "a1.h8->a6.h1<v>": {
+      "score": 31.1544246673584,
+      "in_graph": true
+    },
+    "a4.h11->a6.h8<q>": {
+      "score": 31.149974822998047,
+      "in_graph": true
+    },
+    "a1.h8->a3.h4<k>": {
+      "score": 46.6786003112793,
+      "in_graph": true
+    },
+    "a1.h8->a3.h4<v>": {
+      "score": 46.6786003112793,
+      "in_graph": true
+    },
+    "a2.h7->a6.h1<q>": {
+      "score": 46.13557243347168,
+      "in_graph": true
+    },
+    "a1.h2->a5.h2<q>": {
+      "score": 31.107654571533203,
+      "in_graph": true
+    },
+    "a0.h2->a1.h9<q>": {
+      "score": 31.101451873779297,
+      "in_graph": true
+    },
+    "a0.h5->a3.h11<k>": {
+      "score": 46.384217262268066,
+      "in_graph": true
+    },
+    "a0.h5->a3.h11<v>": {
+      "score": 46.384217262268066,
+      "in_graph": true
+    },
+    "a3.h4->a7.h7<q>": {
+      "score": 31.08560562133789,
+      "in_graph": true
+    },
+    "m3->a6.h6<q>": {
+      "score": 61.10928249359131,
+      "in_graph": true
+    },
+    "a3.h3->a6.h4<q>": {
+      "score": 61.89439296722412,
+      "in_graph": true
+    },
+    "a0.h10->a3.h5<k>": {
+      "score": 31.001440048217773,
+      "in_graph": true
+    },
+    "a0.h10->a3.h5<v>": {
+      "score": 31.001440048217773,
+      "in_graph": true
+    },
+    "m0->a4.h5<k>": {
+      "score": 30.994136810302734,
+      "in_graph": true
+    },
+    "m0->a4.h5<v>": {
+      "score": 30.994136810302734,
+      "in_graph": true
+    },
+    "a4.h5->m4": {
+      "score": 30.994136810302734,
+      "in_graph": true
+    },
+    "a0.h10->a3.h11<q>": {
+      "score": 30.99355125427246,
+      "in_graph": true
+    },
+    "a0.h0->a7.h0<q>": {
+      "score": 30.985998153686523,
+      "in_graph": true
+    },
+    "a1.h5->a7.h0<q>": {
+      "score": 30.946025848388672,
+      "in_graph": true
+    },
+    "m0->a4.h1<q>": {
+      "score": 76.79614162445068,
+      "in_graph": true
+    },
+    "a4.h1->a5.h4<q>": {
+      "score": 153.19261264801025,
+      "in_graph": true
+    },
+    "m0->a4.h6<k>": {
+      "score": 30.93572425842285,
+      "in_graph": true
+    },
+    "m0->a4.h6<v>": {
+      "score": 30.93572425842285,
+      "in_graph": true
+    },
+    "a0.h5->a3.h9<q>": {
+      "score": 30.933578491210938,
+      "in_graph": true
+    },
+    "a0.h8->a7.h0<q>": {
+      "score": 30.917236328125,
+      "in_graph": true
+    },
+    "a1.h11->a4.h6<q>": {
+      "score": 30.914541244506836,
+      "in_graph": true
+    },
+    "a3.h3->a6.h2<q>": {
+      "score": 30.90683364868164,
+      "in_graph": true
+    },
+    "a3.h9->a6.h7<q>": {
+      "score": 183.96329593658447,
+      "in_graph": true
+    },
+    "a1.h3->a3.h5<k>": {
+      "score": 30.90179443359375,
+      "in_graph": true
+    },
+    "a1.h3->a3.h5<v>": {
+      "score": 30.90179443359375,
+      "in_graph": true
+    },
+    "input->a0.h7<q>": {
+      "score": 30.899913787841797,
+      "in_graph": true
+    },
+    "a0.h7->m5": {
+      "score": 30.899913787841797,
+      "in_graph": true
+    },
+    "a0.h10->a3.h2<q>": {
+      "score": 30.8991641998291,
+      "in_graph": true
+    },
+    "a0.h10->a1.h9<k>": {
+      "score": 30.89190101623535,
+      "in_graph": true
+    },
+    "a0.h10->a1.h9<v>": {
+      "score": 30.89190101623535,
+      "in_graph": true
+    },
+    "a0.h4->a1.h0<q>": {
+      "score": 30.875377655029297,
+      "in_graph": true
+    },
+    "m0->a2.h4<q>": {
+      "score": 30.862442016601562,
+      "in_graph": true
+    },
+    "a2.h4->a3.h6<k>": {
+      "score": 45.89469909667969,
+      "in_graph": true
+    },
+    "a2.h4->a3.h6<v>": {
+      "score": 45.89469909667969,
+      "in_graph": true
+    },
+    "a0.h6->a2.h4<k>": {
+      "score": 30.85733985900879,
+      "in_graph": true
+    },
+    "a0.h6->a2.h4<v>": {
+      "score": 30.85733985900879,
+      "in_graph": true
+    },
+    "a0.h5->m4": {
+      "score": 30.835323333740234,
+      "in_graph": true
+    },
+    "m4->a5.h3<q>": {
+      "score": 46.236573219299316,
+      "in_graph": true
+    },
+    "a0.h3->m1": {
+      "score": 30.829837799072266,
+      "in_graph": true
+    },
+    "a0.h9->a1.h9<q>": {
+      "score": 30.819570541381836,
+      "in_graph": true
+    },
+    "a1.h4->a3.h7<k>": {
+      "score": 30.81903076171875,
+      "in_graph": true
+    },
+    "a1.h4->a3.h7<v>": {
+      "score": 30.81903076171875,
+      "in_graph": true
+    },
+    "a1.h4->a6.h6<q>": {
+      "score": 30.81833267211914,
+      "in_graph": true
+    },
+    "m2->a5.h11<q>": {
+      "score": 30.816869735717773,
+      "in_graph": true
+    },
+    "a5.h11->a7.h6<k>": {
+      "score": 30.816869735717773,
+      "in_graph": true
+    },
+    "a5.h11->a7.h6<v>": {
+      "score": 30.816869735717773,
+      "in_graph": true
+    },
+    "a0.h11->a5.h4<k>": {
+      "score": 30.80029296875,
+      "in_graph": true
+    },
+    "a0.h11->a5.h4<v>": {
+      "score": 30.80029296875,
+      "in_graph": true
+    },
+    "m2->a3.h9<q>": {
+      "score": 76.20222854614258,
+      "in_graph": true
+    },
+    "a0.h6->a2.h1<k>": {
+      "score": 30.797876358032227,
+      "in_graph": true
+    },
+    "a0.h6->a2.h1<v>": {
+      "score": 30.797876358032227,
+      "in_graph": true
+    },
+    "m1->a4.h1<q>": {
+      "score": 30.79340171813965,
+      "in_graph": true
+    },
+    "a0.h11->a3.h2<q>": {
+      "score": 30.780376434326172,
+      "in_graph": true
+    },
+    "a1.h10->a6.h8<q>": {
+      "score": 30.77309226989746,
+      "in_graph": true
+    },
+    "a0.h10->a3.h9<q>": {
+      "score": 45.87531852722168,
+      "in_graph": true
+    },
+    "a0.h7->a1.h7<q>": {
+      "score": 30.76900291442871,
+      "in_graph": true
+    },
+    "a2.h9->a7.h5<q>": {
+      "score": 30.768108367919922,
+      "in_graph": true
+    },
+    "a1.h4->a5.h3<q>": {
+      "score": 30.761962890625,
+      "in_graph": true
+    },
+    "m1->a3.h9<q>": {
+      "score": 76.01838970184326,
+      "in_graph": true
+    },
+    "a0.h8->a1.h10<k>": {
+      "score": 30.755352020263672,
+      "in_graph": true
+    },
+    "a0.h8->a1.h10<v>": {
+      "score": 30.755352020263672,
+      "in_graph": true
+    },
+    "a1.h10->a6.h7<q>": {
+      "score": 76.1904993057251,
+      "in_graph": true
+    },
+    "m0->a2.h3<q>": {
+      "score": 45.81968879699707,
+      "in_graph": true
+    },
+    "a0.h10->a4.h1<q>": {
+      "score": 30.752819061279297,
+      "in_graph": true
+    },
+    "input->a1.h11<k>": {
+      "score": 61.13529300689697,
+      "in_graph": true
+    },
+    "input->a1.h11<v>": {
+      "score": 61.13529300689697,
+      "in_graph": true
+    },
+    "a0.h11->a4.h1<q>": {
+      "score": 30.709728240966797,
+      "in_graph": true
+    },
+    "input->a3.h10<k>": {
+      "score": 30.709484100341797,
+      "in_graph": true
+    },
+    "input->a3.h10<v>": {
+      "score": 30.709484100341797,
+      "in_graph": true
+    },
+    "a0.h10->a1.h7<q>": {
+      "score": 30.705821990966797,
+      "in_graph": true
+    },
+    "m2->a3.h3<k>": {
+      "score": 30.6934757232666,
+      "in_graph": true
+    },
+    "m2->a3.h3<v>": {
+      "score": 30.6934757232666,
+      "in_graph": true
+    },
+    "a1.h5->m5": {
+      "score": 30.69148826599121,
+      "in_graph": true
+    },
+    "a4.h11->a5.h4<q>": {
+      "score": 30.683414459228516,
+      "in_graph": true
+    },
+    "a0.h7->a2.h2<k>": {
+      "score": 45.84809875488281,
+      "in_graph": true
+    },
+    "a0.h7->a2.h2<v>": {
+      "score": 45.84809875488281,
+      "in_graph": true
+    },
+    "a0.h9->a4.h0<k>": {
+      "score": 30.670459747314453,
+      "in_graph": true
+    },
+    "a0.h9->a4.h0<v>": {
+      "score": 30.670459747314453,
+      "in_graph": true
+    },
+    "a4.h0->a7.h5<q>": {
+      "score": 61.04410648345947,
+      "in_graph": true
+    },
+    "a0.h8->a3.h11<k>": {
+      "score": 30.66489601135254,
+      "in_graph": true
+    },
+    "a0.h8->a3.h11<v>": {
+      "score": 30.66489601135254,
+      "in_graph": true
+    },
+    "a1.h6->a5.h0<k>": {
+      "score": 30.66275978088379,
+      "in_graph": true
+    },
+    "a1.h6->a5.h0<v>": {
+      "score": 30.66275978088379,
+      "in_graph": true
+    },
+    "a0.h11->a3.h4<k>": {
+      "score": 30.655038833618164,
+      "in_graph": true
+    },
+    "a0.h11->a3.h4<v>": {
+      "score": 30.655038833618164,
+      "in_graph": true
+    },
+    "a0.h5->a3.h8<k>": {
+      "score": 30.638357162475586,
+      "in_graph": true
+    },
+    "a0.h5->a3.h8<v>": {
+      "score": 30.638357162475586,
+      "in_graph": true
+    },
+    "a3.h8->a6.h1<q>": {
+      "score": 30.638357162475586,
+      "in_graph": true
+    },
+    "a1.h4->a3.h10<q>": {
+      "score": 45.707292556762695,
+      "in_graph": true
+    },
+    "a1.h11->a6.h7<q>": {
+      "score": 91.00198554992676,
+      "in_graph": true
+    },
+    "a3.h6->a6.h9<q>": {
+      "score": 30.621929168701172,
+      "in_graph": true
+    },
+    "a0.h11->a3.h9<q>": {
+      "score": 30.62088394165039,
+      "in_graph": true
+    },
+    "a1.h2->a4.h6<q>": {
+      "score": 45.898977279663086,
+      "in_graph": true
+    },
+    "input->a2.h11<q>": {
+      "score": 61.15046787261963,
+      "in_graph": true
+    },
+    "a2.h11->a7.h5<q>": {
+      "score": 45.74680709838867,
+      "in_graph": true
+    },
+    "a0.h11->a1.h7<k>": {
+      "score": 30.60739517211914,
+      "in_graph": true
+    },
+    "a0.h11->a1.h7<v>": {
+      "score": 30.60739517211914,
+      "in_graph": true
+    },
+    "a1.h7->a6.h8<q>": {
+      "score": 45.85197830200195,
+      "in_graph": true
+    },
+    "a1.h6->m3": {
+      "score": 30.603740692138672,
+      "in_graph": true
+    },
+    "a1.h8->a4.h7<q>": {
+      "score": 30.597976684570312,
+      "in_graph": true
+    },
+    "a0.h6->a2.h8<k>": {
+      "score": 30.597625732421875,
+      "in_graph": true
+    },
+    "a0.h6->a2.h8<v>": {
+      "score": 30.597625732421875,
+      "in_graph": true
+    },
+    "a0.h5->a2.h1<k>": {
+      "score": 30.58551025390625,
+      "in_graph": true
+    },
+    "a0.h5->a2.h1<v>": {
+      "score": 30.58551025390625,
+      "in_graph": true
+    },
+    "a0.h5->a1.h0<q>": {
+      "score": 30.58392333984375,
+      "in_graph": true
+    },
+    "m0->a2.h5<k>": {
+      "score": 30.5822696685791,
+      "in_graph": true
+    },
+    "m0->a2.h5<v>": {
+      "score": 30.5822696685791,
+      "in_graph": true
+    },
+    "a2.h5->m3": {
+      "score": 30.5822696685791,
+      "in_graph": true
+    },
+    "a5.h2->a7.h1<q>": {
+      "score": 30.581127166748047,
+      "in_graph": true
+    },
+    "a1.h8->a3.h6<q>": {
+      "score": 60.87348175048828,
+      "in_graph": true
+    },
+    "a2.h11->a6.h8<q>": {
+      "score": 30.564472198486328,
+      "in_graph": true
+    },
+    "a2.h8->a5.h10<k>": {
+      "score": 30.555456161499023,
+      "in_graph": true
+    },
+    "a2.h8->a5.h10<v>": {
+      "score": 30.555456161499023,
+      "in_graph": true
+    },
+    "a0.h6->a3.h7<k>": {
+      "score": 30.55415916442871,
+      "in_graph": true
+    },
+    "a0.h6->a3.h7<v>": {
+      "score": 30.55415916442871,
+      "in_graph": true
+    },
+    "a1.h4->a3.h9<q>": {
+      "score": 45.786892890930176,
+      "in_graph": true
+    },
+    "a2.h3->a6.h7<q>": {
+      "score": 60.633216857910156,
+      "in_graph": true
+    },
+    "input->a3.h10<q>": {
+      "score": 30.529827117919922,
+      "in_graph": true
+    },
+    "a1.h2->a2.h2<q>": {
+      "score": 30.527515411376953,
+      "in_graph": true
+    },
+    "m2->a4.h1<q>": {
+      "score": 30.516429901123047,
+      "in_graph": true
+    },
+    "a2.h11->a6.h7<q>": {
+      "score": 30.507299423217773,
+      "in_graph": true
+    },
+    "a0.h6->a2.h2<k>": {
+      "score": 60.60607624053955,
+      "in_graph": true
+    },
+    "a0.h6->a2.h2<v>": {
+      "score": 60.60607624053955,
+      "in_graph": true
+    },
+    "a0.h11->a4.h0<k>": {
+      "score": 30.499298095703125,
+      "in_graph": true
+    },
+    "a0.h11->a4.h0<v>": {
+      "score": 30.499298095703125,
+      "in_graph": true
+    },
+    "a0.h6->a1.h4<k>": {
+      "score": 45.60849666595459,
+      "in_graph": true
+    },
+    "a0.h6->a1.h4<v>": {
+      "score": 45.60849666595459,
+      "in_graph": true
+    },
+    "m1->a2.h0<k>": {
+      "score": 30.493738174438477,
+      "in_graph": true
+    },
+    "m1->a2.h0<v>": {
+      "score": 30.493738174438477,
+      "in_graph": true
+    },
+    "a1.h11->a6.h8<q>": {
+      "score": 45.72173881530762,
+      "in_graph": true
+    },
+    "a0.h6->a1.h7<k>": {
+      "score": 45.516085624694824,
+      "in_graph": true
+    },
+    "a0.h6->a1.h7<v>": {
+      "score": 45.516085624694824,
+      "in_graph": true
+    },
+    "m0->a6.h1<q>": {
+      "score": 45.58527755737305,
+      "in_graph": true
+    },
+    "a1.h2->a6.h8<q>": {
+      "score": 30.485912322998047,
+      "in_graph": true
+    },
+    "a0.h11->a1.h8<q>": {
+      "score": 30.47532081604004,
+      "in_graph": true
+    },
+    "a1.h4->a2.h2<q>": {
+      "score": 30.474849700927734,
+      "in_graph": true
+    },
+    "a1.h8->a5.h0<k>": {
+      "score": 30.454715728759766,
+      "in_graph": true
+    },
+    "a1.h8->a5.h0<v>": {
+      "score": 30.454715728759766,
+      "in_graph": true
+    },
+    "a0.h5->a2.h10<k>": {
+      "score": 45.60945224761963,
+      "in_graph": true
+    },
+    "a0.h5->a2.h10<v>": {
+      "score": 45.60945224761963,
+      "in_graph": true
+    },
+    "a2.h5->m2": {
+      "score": 45.56231498718262,
+      "in_graph": true
+    },
+    "m2->a7.h0<q>": {
+      "score": 45.63319396972656,
+      "in_graph": true
+    },
+    "a2.h8->a4.h5<k>": {
+      "score": 30.446081161499023,
+      "in_graph": true
+    },
+    "a2.h8->a4.h5<v>": {
+      "score": 30.446081161499023,
+      "in_graph": true
+    },
+    "a4.h5->a7.h5<q>": {
+      "score": 30.446081161499023,
+      "in_graph": true
+    },
+    "a1.h2->a2.h10<k>": {
+      "score": 45.612847328186035,
+      "in_graph": true
+    },
+    "a1.h2->a2.h10<v>": {
+      "score": 45.612847328186035,
+      "in_graph": true
+    },
+    "a2.h10->a6.h7<q>": {
+      "score": 121.09624004364014,
+      "in_graph": true
+    },
+    "a0.h10->a2.h10<q>": {
+      "score": 45.50165939331055,
+      "in_graph": true
+    },
+    "a2.h10->a6.h8<q>": {
+      "score": 75.76800155639648,
+      "in_graph": true
+    },
+    "m0->a3.h10<k>": {
+      "score": 30.408132553100586,
+      "in_graph": true
+    },
+    "m0->a3.h10<v>": {
+      "score": 30.408132553100586,
+      "in_graph": true
+    },
+    "a3.h10->m3": {
+      "score": 60.61380386352539,
+      "in_graph": true
+    },
+    "a2.h9->a3.h10<k>": {
+      "score": 30.40386962890625,
+      "in_graph": true
+    },
+    "a2.h9->a3.h10<v>": {
+      "score": 30.40386962890625,
+      "in_graph": true
+    },
+    "m2->a6.h8<q>": {
+      "score": 45.456454277038574,
+      "in_graph": true
+    },
+    "a1.h4->a6.h8<q>": {
+      "score": 45.5022611618042,
+      "in_graph": true
+    },
+    "a0.h2->m1": {
+      "score": 30.3765811920166,
+      "in_graph": true
+    },
+    "m2->a3.h11<q>": {
+      "score": 30.372833251953125,
+      "in_graph": true
+    },
+    "m0->a4.h8<k>": {
+      "score": 30.361675262451172,
+      "in_graph": true
+    },
+    "m0->a4.h8<v>": {
+      "score": 30.361675262451172,
+      "in_graph": true
+    },
+    "a1.h3->a6.h8<q>": {
+      "score": 30.359668731689453,
+      "in_graph": true
+    },
+    "a0.h0->a4.h6<q>": {
+      "score": 30.35696029663086,
+      "in_graph": true
+    },
+    "m1->a6.h8<q>": {
+      "score": 90.9217357635498,
+      "in_graph": true
+    },
+    "a0.h7->a1.h4<k>": {
+      "score": 45.435425758361816,
+      "in_graph": true
+    },
+    "a0.h7->a1.h4<v>": {
+      "score": 45.435425758361816,
+      "in_graph": true
+    },
+    "a1.h4->a6.h7<q>": {
+      "score": 75.62656593322754,
+      "in_graph": true
+    },
+    "input->a6.h11<k>": {
+      "score": 30.32297706604004,
+      "in_graph": true
+    },
+    "input->a6.h11<v>": {
+      "score": 30.32297706604004,
+      "in_graph": true
+    },
+    "input->a1.h8<q>": {
+      "score": 30.309839248657227,
+      "in_graph": true
+    },
+    "a1.h8->a6.h8<q>": {
+      "score": 45.449777603149414,
+      "in_graph": true
+    },
+    "a0.h10->a6.h8<q>": {
+      "score": 30.304241180419922,
+      "in_graph": true
+    },
+    "a1.h10->a2.h10<k>": {
+      "score": 30.295360565185547,
+      "in_graph": true
+    },
+    "a1.h10->a2.h10<v>": {
+      "score": 30.295360565185547,
+      "in_graph": true
+    },
+    "a0.h11->a2.h10<q>": {
+      "score": 45.37377166748047,
+      "in_graph": true
+    },
+    "a1.h7->a6.h7<q>": {
+      "score": 45.30660343170166,
+      "in_graph": true
+    },
+    "a0.h1->a7.h0<q>": {
+      "score": 30.274078369140625,
+      "in_graph": true
+    },
+    "m1->a5.h3<k>": {
+      "score": 30.271739959716797,
+      "in_graph": true
+    },
+    "m1->a5.h3<v>": {
+      "score": 30.271739959716797,
+      "in_graph": true
+    },
+    "a5.h3->a7.h1<q>": {
+      "score": 30.271739959716797,
+      "in_graph": true
+    },
+    "a0.h5->a2.h11<q>": {
+      "score": 30.264450073242188,
+      "in_graph": true
+    },
+    "a2.h7->a4.h6<k>": {
+      "score": 30.258056640625,
+      "in_graph": true
+    },
+    "a2.h7->a4.h6<v>": {
+      "score": 30.258056640625,
+      "in_graph": true
+    },
+    "a0.h5->a3.h1<q>": {
+      "score": 30.253963470458984,
+      "in_graph": true
+    },
+    "a3.h1->m4": {
+      "score": 30.253963470458984,
+      "in_graph": true
+    },
+    "a0.h6->a4.h0<k>": {
+      "score": 30.247995376586914,
+      "in_graph": true
+    },
+    "a0.h6->a4.h0<v>": {
+      "score": 30.247995376586914,
+      "in_graph": true
+    },
+    "a2.h2->a3.h11<k>": {
+      "score": 30.246688842773438,
+      "in_graph": true
+    },
+    "a2.h2->a3.h11<v>": {
+      "score": 30.246688842773438,
+      "in_graph": true
+    },
+    "a0.h6->a1.h5<q>": {
+      "score": 30.24005126953125,
+      "in_graph": true
+    },
+    "a0.h8->a1.h4<k>": {
+      "score": 45.33860969543457,
+      "in_graph": true
+    },
+    "a0.h8->a1.h4<v>": {
+      "score": 45.33860969543457,
+      "in_graph": true
+    },
+    "m2->a6.h7<q>": {
+      "score": 60.33951663970947,
+      "in_graph": true
+    },
+    "m1->a6.h7<q>": {
+      "score": 45.32423210144043,
+      "in_graph": true
+    },
+    "a0.h0->a1.h10<k>": {
+      "score": 30.211063385009766,
+      "in_graph": true
+    },
+    "a0.h0->a1.h10<v>": {
+      "score": 30.211063385009766,
+      "in_graph": true
+    },
+    "m1->a5.h8<k>": {
+      "score": 30.203948974609375,
+      "in_graph": true
+    },
+    "m1->a5.h8<v>": {
+      "score": 30.203948974609375,
+      "in_graph": true
+    },
+    "a1.h3->a4.h6<k>": {
+      "score": 30.20200538635254,
+      "in_graph": true
+    },
+    "a1.h3->a4.h6<v>": {
+      "score": 30.20200538635254,
+      "in_graph": true
+    },
+    "a0.h8->a1.h0<q>": {
+      "score": 30.1986083984375,
+      "in_graph": true
+    },
+    "a1.h9->a3.h9<k>": {
+      "score": 30.195749282836914,
+      "in_graph": true
+    },
+    "a1.h9->a3.h9<v>": {
+      "score": 30.195749282836914,
+      "in_graph": true
+    },
+    "a0.h6->a1.h10<k>": {
+      "score": 45.23372173309326,
+      "in_graph": true
+    },
+    "a0.h6->a1.h10<v>": {
+      "score": 45.23372173309326,
+      "in_graph": true
+    },
+    "a1.h0->a7.h5<q>": {
+      "score": 30.18978500366211,
+      "in_graph": true
+    },
+    "a0.h5->a1.h11<k>": {
+      "score": 30.18172264099121,
+      "in_graph": true
+    },
+    "a0.h5->a1.h11<v>": {
+      "score": 30.18172264099121,
+      "in_graph": true
+    },
+    "a0.h5->a3.h7<k>": {
+      "score": 30.16337013244629,
+      "in_graph": true
+    },
+    "a0.h5->a3.h7<v>": {
+      "score": 30.16337013244629,
+      "in_graph": true
+    },
+    "a0.h11->a6.h8<q>": {
+      "score": 30.1511173248291,
+      "in_graph": true
+    },
+    "input->a1.h2<k>": {
+      "score": 30.10087013244629,
+      "in_graph": true
+    },
+    "input->a1.h2<v>": {
+      "score": 30.10087013244629,
+      "in_graph": true
+    },
+    "m1->a3.h8<k>": {
+      "score": 30.099040985107422,
+      "in_graph": true
+    },
+    "m1->a3.h8<v>": {
+      "score": 30.099040985107422,
+      "in_graph": true
+    },
+    "a3.h8->a5.h2<k>": {
+      "score": 30.099040985107422,
+      "in_graph": true
+    },
+    "a3.h8->a5.h2<v>": {
+      "score": 30.099040985107422,
+      "in_graph": true
+    },
+    "a0.h2->a1.h11<k>": {
+      "score": 30.098705291748047,
+      "in_graph": true
+    },
+    "a0.h2->a1.h11<v>": {
+      "score": 30.098705291748047,
+      "in_graph": true
+    },
+    "m1->a2.h10<q>": {
+      "score": 45.13526630401611,
+      "in_graph": true
+    },
+    "a0.h7->a1.h5<k>": {
+      "score": 30.091068267822266,
+      "in_graph": true
+    },
+    "a0.h7->a1.h5<v>": {
+      "score": 30.091068267822266,
+      "in_graph": true
+    },
+    "m1->a7.h0<q>": {
+      "score": 45.09868621826172,
+      "in_graph": true
+    },
+    "a1.h6->a3.h5<k>": {
+      "score": 30.080608367919922,
+      "in_graph": true
+    },
+    "a1.h6->a3.h5<v>": {
+      "score": 30.080608367919922,
+      "in_graph": true
+    },
+    "a0.h11->a5.h3<q>": {
+      "score": 30.08013916015625,
+      "in_graph": true
+    },
+    "m1->a2.h3<q>": {
+      "score": 30.072513580322266,
+      "in_graph": true
+    },
+    "a1.h11->a5.h3<q>": {
+      "score": 30.059581756591797,
+      "in_graph": true
+    },
+    "a0.h5->a4.h7<k>": {
+      "score": 30.046655654907227,
+      "in_graph": true
+    },
+    "a0.h5->a4.h7<v>": {
+      "score": 30.046655654907227,
+      "in_graph": true
+    },
+    "a4.h7->a6.h8<q>": {
+      "score": 30.046655654907227,
+      "in_graph": true
+    },
+    "m2->a4.h10<q>": {
+      "score": 30.03729820251465,
+      "in_graph": true
+    },
+    "a4.h10->m4": {
+      "score": 30.03729820251465,
+      "in_graph": true
+    },
+    "a0.h10->a7.h0<q>": {
+      "score": 30.026519775390625,
+      "in_graph": true
+    },
+    "a1.h4->a4.h1<q>": {
+      "score": 30.02056312561035,
+      "in_graph": true
+    },
+    "a0.h11->a3.h9<k>": {
+      "score": 30.02031898498535,
+      "in_graph": true
+    },
+    "a0.h11->a3.h9<v>": {
+      "score": 30.02031898498535,
+      "in_graph": true
+    },
+    "a1.h4->m3": {
+      "score": 30.020151138305664,
+      "in_graph": true
+    },
+    "a0.h0->a6.h8<q>": {
+      "score": 30.014678955078125,
+      "in_graph": true
+    },
+    "a1.h4->a2.h7<k>": {
+      "score": 30.008014678955078,
+      "in_graph": true
+    },
+    "a1.h4->a2.h7<v>": {
+      "score": 30.008014678955078,
+      "in_graph": true
+    },
+    "m2->a5.h4<k>": {
+      "score": 30.00680160522461,
+      "in_graph": true
+    },
+    "m2->a5.h4<v>": {
+      "score": 30.00680160522461,
+      "in_graph": true
+    },
+    "a1.h0->a4.h7<k>": {
+      "score": 30.00668716430664,
+      "in_graph": true
+    },
+    "a1.h0->a4.h7<v>": {
+      "score": 30.00668716430664,
+      "in_graph": true
+    },
+    "a0.h0->a1.h8<k>": {
+      "score": 30.005395889282227,
+      "in_graph": true
+    },
+    "a0.h0->a1.h8<v>": {
+      "score": 30.005395889282227,
+      "in_graph": true
+    }
+  }
+}

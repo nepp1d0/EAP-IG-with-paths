@@ -807,8 +807,13 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 			print(f"    Frontier: {frontier}(total {len(frontier)})")
 
 		cur_depth_frontier = []
+		completed_in_depth = 0
+		expanded_paths = 0
 		# Expand all paths in the frontier looking for meaningful continuations
-		for prev_contrib, incomplete_path in frontier:
+		path_pbar = tqdm(frontier, desc=f"Expanding paths at depth {depth + 1}", leave=False)
+		for prev_contrib, incomplete_path in path_pbar:
+			expanded_paths += 1
+			path_pbar.set_postfix({"expanded": expanded_paths, "completed_in_depth": completed_in_depth, "total_completed": len(completed_paths)})
 			required_contribution = max(min_contribution_percentage * abs(prev_contrib) / 100.0, min_contribution)
 			
 			cur_path_start = incomplete_path[0]
@@ -832,6 +837,7 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 					)
 					if abs(contribution) >= required_contribution:
 						completed_paths.append((contribution, [candidate] + incomplete_path))
+						completed_in_depth += 1
 
 				# ATTN requires to check the contribution of the whole component and of the individual heads
 				elif candidate.__class__.__name__ == 'ATTN_Node':
@@ -879,10 +885,12 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 			# Expand the frontier with the found meaningful components
 			cur_depth_frontier.extend(cur_path_continuations)
 		frontier = cur_depth_frontier
-		pbar.set_postfix({"completed_paths": len(completed_paths), "frontier_size": len(frontier)})
+		pbar.set_postfix({"completed_paths": len(completed_paths), "frontier_size": len(frontier), "completed_in_depth": completed_in_depth, "expanded_paths": expanded_paths})
+		print(f"Depth {depth + 1} completed: {expanded_paths} paths expanded, {completed_in_depth} paths completed, {len(frontier)} paths in next frontier")
 
 	# For the last step we don't need to evaluate all the nodes in the frontier, we just need to evaluate the contribution of input embeddings
-	for contrib, path in frontier:
+	final_pbar = tqdm(frontier, desc="Processing final frontier paths", leave=False)
+	for contrib, path in final_pbar:
 		# Evaluate the contribution of the EMBED_Node (no position distinction)
 		embed_node = EMBED_Node(layer=0, position=None)
 		contribution = evaluate_path_with_counterfactual_cached_no_pos(
@@ -894,11 +902,14 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 		required_contribution = max(min_contribution_percentage * abs(contrib) / 100.0, min_contribution)
 		if abs(contribution) >= required_contribution:
 			completed_paths.append((contribution, [embed_node] + path))
+			final_pbar.set_postfix({"total_completed": len(completed_paths)})
 	
 	# Clean up memory
 	message_cache.clear()  # Clear the message cache to free memory
 	torch.cuda.empty_cache()  # Clear CUDA memory if using GPU
 	gc.collect()  # Run garbage collection to free up memory
+	
+	print(f"Search completed: {len(completed_paths)} total paths found")
 	
 	# Sort the completed paths by contribution and return them
 	return sorted(completed_paths, key=lambda x: x[0], reverse=True)

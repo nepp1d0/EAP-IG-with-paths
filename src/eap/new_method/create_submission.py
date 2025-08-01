@@ -11,6 +11,11 @@ import glob
 from datetime import datetime
 from path_to_graph_translator import convert_json_file_to_leaderboard_format
 
+# Change to the script's directory to ensure relative paths work correctly
+# This is especially important when running from VSCode debugger which may launch from workspace root
+script_dir = os.path.dirname(os.path.abspath(__file__))
+os.chdir(script_dir)
+
 
 def extract_model_task_from_filename(filename: str) -> tuple:
     """

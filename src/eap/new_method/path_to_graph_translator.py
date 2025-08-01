@@ -370,8 +370,8 @@ def json_node_to_node(json_node: Dict[str, Any]) -> Node:
     position = json_node.get("position")
     
     # Filter out nodes with position: null
-    if position is None:
-        return None
+    #if position is None:
+    #    return None
     
     if node_type == "EMBED_Node":
         return EMBED_Node(layer=layer, position=position)
@@ -412,7 +412,7 @@ def load_paths_from_json(filename: str) -> List[Tuple[float, List[Node]]]:
     paths = []
     for path_data in data["paths"]:
         score = path_data["score"]
-        # Convert nodes and filter out None values (nodes with position: null)
+        # Convert nodes 
         nodes = [json_node_to_node(node_data) for node_data in path_data["nodes"]]
         nodes = [node for node in nodes if node is not None]
         
