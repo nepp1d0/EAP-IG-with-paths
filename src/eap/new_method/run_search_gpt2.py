@@ -20,7 +20,7 @@ TOKEN = os.getenv("TOKEN")
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.set_grad_enabled(False)
 TASK = "ioi" # "ioi" or "mcqa"
-TARGET_LENGTH = 32 # from 15 to 19 for ioi - from 32 to 37 for mcqa
+TARGET_LENGTH = 16 # from 15 to 19 for ioi - from 32 to 37 for mcqa
 BATCH_SIZE = 16 # Number of samples from the dataset to consider
 DEFAULT_METRIC = compare_token_logit
 CONTRIBUTION_THRESHOLD = 0.25 # 0.25 -> 2700~ path for depth=10 with ioi / 
@@ -78,27 +78,27 @@ print(f"Probability of the answer: {torch.softmax(model(samples_prompt[0], prepe
 
 logits, cache = model.run_with_cache(samples_prompt, prepend_bos=True)
 
-# complete_paths, incomplete_paths = breadth_first_search(
-# 	model,
-# 	cache,
-# 	compare_token_logit,
-# 	start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=TARGET_LENGTH-1)],
-# 	ground_truth_tokens = sample_answers,
-# 	max_depth = 15,
-# 	max_branching_factor = 2048,
-# 	min_contribution = CONTRIBUTION_THRESHOLD,
-# 	min_contribution_percentage=0.,
-# 	inibition_task = False
-# )
-complete_paths = breadth_first_search_cached_no_pos(
-	model,
-	cache,
-	compare_token_logit,
-	start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=None)],
-	ground_truth_tokens = sample_answers,
-	min_contribution = CONTRIBUTION_THRESHOLD,
-	cached_path_lenght=0
-)
+complete_paths, incomplete_paths = breadth_first_search(
+ 	model,
+ 	cache,
+ 	compare_token_logit,
+ 	start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=TARGET_LENGTH-1)],
+ 	ground_truth_tokens = sample_answers,
+ 	max_depth = 15,
+ 	max_branching_factor = 2048,
+ 	min_contribution = CONTRIBUTION_THRESHOLD,
+ 	min_contribution_percentage=0.,
+ 	inibition_task = False
+ )
+#complete_paths = breadth_first_search_cached_no_pos(
+#	model,
+#	cache,
+#	compare_token_logit,
+#	start_node = [FINAL_Node(layer=model.cfg.n_layers-1, position=None)],
+#	ground_truth_tokens = sample_answers,
+#	min_contribution = CONTRIBUTION_THRESHOLD,
+#	cached_path_lenght=0
+#)
 incomplete_paths = []
 print(f"Found {len(complete_paths)} complete paths and {len(incomplete_paths)} incomplete paths.")
 

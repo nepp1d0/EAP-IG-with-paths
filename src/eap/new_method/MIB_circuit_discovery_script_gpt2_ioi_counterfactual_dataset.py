@@ -24,7 +24,10 @@ from datetime import datetime
 import json
 
 # Add the MIB circuit track to the path
-sys.path.append('../../../../')
+import os
+script_dir = os.path.dirname(os.path.abspath(__file__))
+project_root = os.path.join(script_dir, '..', '..', '..', '..')
+sys.path.append(project_root)
 from MIB_circuit_track.dataset import HFEAPDataset
 
 from utils.metrics import logit_difference_counterfactual
