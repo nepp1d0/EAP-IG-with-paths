@@ -59,7 +59,7 @@ def main():
     parser.add_argument("--example-idx", type=int, default=0)
     parser.add_argument("--max-depth", type=int, default=100)
     parser.add_argument("--max-branching-factor", type=int, default=2048)
-    parser.add_argument("--min-contribution", type=float, default=5)
+    parser.add_argument("--min-contribution", type=float, default=14)
     parser.add_argument("--min-contribution-percentage", type=float, default=0.0)
     parser.add_argument("--find-subject-inhibition", action="store_true")
     parser.add_argument("--output-dir", type=str, default="detected_paths")
