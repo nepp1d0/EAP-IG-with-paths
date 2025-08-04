@@ -128,7 +128,7 @@ def logit_difference_counterfactual(clean_resid: Float[Tensor, "batch seq d_mode
 		clean_logits = torch.einsum('b d, d b-> b', clean_final_resid, W_U[:, target_tokens]) + b_U[target_tokens]
 		counterfactual_logits = torch.einsum('b d, d b-> b', counterfactual_final_resid, W_U[:, counterfactual_tokens]) + b_U[counterfactual_tokens]
 	
-	# Calculate the logit difference: y' - y
+	# Calculate the logit difference: y' - y   ## y - y*
 	logit_diffs = counterfactual_logits - clean_logits
 	return torch.mean(logit_diffs).item()
 

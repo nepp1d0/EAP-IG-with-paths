@@ -179,7 +179,7 @@ def main():
         min_contribution = args.min_contribution,
         min_contribution_percentage = args.min_contribution_percentage,
         inibition_task = True,
-        take_message_from_clean = True  # Take message from clean_cache, apply path in counterfactual_cache
+        take_message_from_clean = False  # Take message from clean_cache, apply path in counterfactual_cache
     )
     
     print(f"Found {len(complete_paths)} complete paths.")
