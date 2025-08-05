@@ -10,6 +10,7 @@ from tqdm import tqdm
 from typing import Callable, Tuple
 from collections import deque
 import gc
+from functools import partial
 
 def breadth_first_search(
 	model: HookedTransformer,
@@ -202,7 +203,7 @@ def path_message(model: HookedTransformer, cache: ActivationCache, path: list[No
  
 	return message
 
-def evaluate_path_with_cache(model, cache, path, metric, correct_tokens, message_cache, max_cached_length=2):
+def evaluate_path_with_cache(model, cache, path, metric, correct_tokens, message_cache, max_cached_length=0):
 	message = None
 	if len(path) == 0:
 		return message
@@ -227,6 +228,79 @@ def evaluate_path_with_cache(model, cache, path, metric, correct_tokens, message
 				message_cache[str(path[:j+1])] = message.detach().clone()
 
 	return metric(path[-1].forward(model, cache), path[-1].forward(model, cache) - message, model, correct_tokens)
+
+def ablation_hook(residual, hook, pos=None, head=None):
+	if head is not None:
+		if pos is not None:
+			residual[:, pos, head, :] = torch.zeros_like(residual[:, pos, head, :])
+		else:
+			residual[:, :, head, :] = torch.zeros_like(residual[:, :, head, :])
+	else:
+		if pos is not None:
+			residual[:, pos, :] = torch.zeros_like(residual[:, pos, :])
+		else:
+			residual = torch.zeros_like(residual)
+	return residual
+
+def add_ablation_hook(model, component):
+	if component.__class__.__name__ == "ATTN_Node":
+		if component.position is not None:
+			hook_fn = partial(ablation_hook, pos=component.position, head=component.head)
+			model.add_perma_hook(f"blocks.{component.layer}.attn.hook_z", hook_fn)
+	elif component.__class__.__name__ == "MLP_Node":
+		hook_fn = partial(ablation_hook, pos=component.position)
+		model.add_perma_hook(f"blocks.{component.layer}.hook_mlp_out", hook_fn)		
+		
+
+def breadth_first_search_recursive(
+	model: HookedTransformer,
+	sample_prompts: ActivationCache,
+	metric: Callable,
+	start_node: list[Node],
+	ground_truth_tokens: list[int],
+	min_contribution: float = 0.5,
+) -> List[Tuple[float, List[Node]]]:
+	_, cache = model.run_with_cache(sample_prompts, prepend_bos=True)
+	cur_paths =  breadth_first_search_cached(
+		model,
+		cache,
+		metric,
+		start_node,
+		ground_truth_tokens,
+		min_contribution,
+	)
+	all_paths = cur_paths.copy()
+	
+	for layer in range(model.cfg.n_layers-1, -1, -1):
+		print(f"Searching for paths in layer {layer}")
+		model.reset_hooks(including_permanent=True)
+		flag = False
+		for _, path in all_paths:
+			for component in path[:-1]:
+				if component.layer == layer:
+					add_ablation_hook(model, component)
+					flag = True
+		if flag:
+			_, cache = model.run_with_cache(sample_prompts, prepend_bos=True)
+			cur_paths =  breadth_first_search_cached(
+				model,
+				cache,
+				metric,
+				start_node,
+				ground_truth_tokens,
+				min_contribution,
+			)
+			all_paths.extend(cur_paths)
+			merged_paths = {}
+			for path in [p for _, p in all_paths]:
+				if merged_paths.get(str(path), None) is None:
+					contributions = [c for c, p in all_paths if p == path]
+					merged_paths[str(path)] = (sum(contributions), path)
+			all_paths = list(merged_paths.values())
+	print(f"Found {len(merged_paths)} unique paths after merging.")
+	print("Paths:", merged_paths.values())
+	return list(merged_paths.values())
+
 
 def breadth_first_search_cached(
 	model: HookedTransformer,
@@ -553,7 +627,7 @@ def evaluate_path_with_counterfactual_cached_no_pos(model, cache, counterfactual
 			# Take message from clean_cache, apply path logic in counterfactual_cache
 			if j == 0:
 				# Get initial message from clean cache
-				message = path[j].forward(model, cache, patch=None)
+				message = path[j].forward(model, counterfactual_cache, patch=None) - path[j].forward(model, cache, patch=None)
 			else:
 				# Apply path logic in counterfactual cache
 				message = path[j].forward(model, counterfactual_cache, patch=message)
@@ -561,7 +635,7 @@ def evaluate_path_with_counterfactual_cached_no_pos(model, cache, counterfactual
 			# Take message from counterfactual_cache, apply path logic in clean_cache
 			if j == 0:
 				# Get initial message from counterfactual cache
-				message = path[j].forward(model, counterfactual_cache, patch=None)
+				message = path[j].forward(model, cache, patch=None) - path[j].forward(model, counterfactual_cache, patch=None)
 			else:
 				# Apply path logic in clean cache
 				message = path[j].forward(model, cache, patch=message)
@@ -574,11 +648,11 @@ def evaluate_path_with_counterfactual_cached_no_pos(model, cache, counterfactual
 	if take_message_from_clean:
 		# Compare: clean final output vs counterfactual final output with path applied
 		clean_resid = path[-1].forward(model, cache)
-		counterfactual_resid_with_path = path[-1].forward(model, counterfactual_cache, patch=message)
+		counterfactual_resid_with_path = path[-1].forward(model, counterfactual_cache) - message 
 	else:
 		# Compare: counterfactual final output vs clean final output with path applied
 		counterfactual_resid = path[-1].forward(model, counterfactual_cache)
-		clean_resid_with_path = path[-1].forward(model, cache, patch=message)
+		clean_resid_with_path = path[-1].forward(model, cache) - message
 		
 		# Swap for consistent comparison (clean vs counterfactual)
 		clean_resid = counterfactual_resid
@@ -760,6 +834,7 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 	inibition_task: bool = False,
 	take_message_from_clean: bool = True,
 	cached_path_length: int = 2,
+	absolute: bool = True
 ) -> List[Tuple[float, List[Node]]]:
 	"""
 	Performs a Breadth-First Search (BFS) starting from a node backwards to identify
@@ -835,7 +910,8 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 						max_cached_length=cached_path_length, invert_value=inibition_task, 
 						take_message_from_clean=take_message_from_clean
 					)
-					if abs(contribution) >= required_contribution:
+					flag = abs(contribution) >= required_contribution if absolute else contribution >= required_contribution
+					if flag:
 						completed_paths.append((contribution, [candidate] + incomplete_path))
 						completed_in_depth += 1
 
@@ -851,7 +927,8 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 					
 					# If the attention component is meaningful:
 					#   1. Check which heads are contributing
-					if abs(whole_component_contribution) >= required_contribution:
+					flag = abs(whole_component_contribution) >= required_contribution if absolute else whole_component_contribution >= required_contribution
+					if flag:
 						# 1. Check which heads are contributing
 						for head in range(model.cfg.n_heads):
 							node = ATTN_Node(candidate.layer, head=head, keyvalue_position=None, position=None, 
@@ -864,7 +941,8 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 							)
 
 							# 2. If this head is meaningful we add it to the path
-							if abs(contribution) >= required_contribution:
+							flag = abs(contribution) >= required_contribution if absolute else contribution >= required_contribution
+							if flag:
 								cur_path_continuations.append((contribution, [node] + incomplete_path))
 		
 				# MLP requires to check the contribution of the whole component
@@ -875,7 +953,8 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 						max_cached_length=cached_path_length, invert_value=inibition_task, 
 						take_message_from_clean=take_message_from_clean
 					)
-					if abs(contribution) >= required_contribution:
+					flag = abs(contribution) >= required_contribution if absolute else contribution >= required_contribution
+					if flag:
 						cur_path_continuations.append((contribution, [candidate] + incomplete_path))
 			
 			# Sort the current path continuations by contribution and take the top-k		
@@ -900,7 +979,8 @@ def breadth_first_search_with_counterfactual_cached_no_pos(
 			take_message_from_clean=take_message_from_clean
 		)
 		required_contribution = max(min_contribution_percentage * abs(contrib) / 100.0, min_contribution)
-		if abs(contribution) >= required_contribution:
+		flag = abs(contribution) >= required_contribution if absolute else contribution >= required_contribution
+		if flag:
 			completed_paths.append((contribution, [embed_node] + path))
 			final_pbar.set_postfix({"total_completed": len(completed_paths)})
 	

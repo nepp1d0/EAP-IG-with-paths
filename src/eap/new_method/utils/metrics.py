@@ -5,6 +5,8 @@ from typing import List, Optional
 from torch import Tensor
 import torch.nn.functional as F
 
+baseline_score = 0.0
+
 def compare_token_probability(clean_resid: Float[Tensor, "batch seq d_model"],
 								corrupted_resid: Float[Tensor, "batch seq d_model"],
 								model: HookedTransformer,
@@ -74,6 +76,58 @@ def compare_token_logit(clean_resid: Float[Tensor, "batch seq d_model"],
 	# Calculate the percentage difference
 	percentage_diffs = 100 * (clean_logits - corrupted_logits) / (torch.abs(clean_logits))
 	return torch.mean(percentage_diffs).item()
+
+def indirect_effect(clean_resid: Float[Tensor, "batch seq d_model"],
+					corrupted_resid: Float[Tensor, "batch seq d_model"],
+					model: HookedTransformer,
+					clean_targets: List[int],
+					corrupt_targets: List[int],
+     				verbose = False,
+					use_ablation_mode = True,
+    				set_baseline = False) -> Float:
+	""" Compute the difference of logits for the target token as a percentage
+		between the clean and corrupted model based on the final residuals.
+		This implementation is optimized for transformerlens HookedTransformer.
+		args:
+			clean_resid: torch.Tensor, shape (batch, seq_len, d_model)
+				The final residual stream of the clean model.
+			corrupted_resid: torch.Tensor, shape (batch, seq_len, d_model)
+				The final residual stream of the corrupted model.
+			model: HookedTransformer
+				The hooked transformer model.
+			target_tokens: list of int
+				The indexes of the target tokens.
+		returns:
+			float
+				The percentage difference in logits for the target token.
+	"""
+
+	# Get the final residual stream for the last token
+	clean_final_resid = clean_resid[:, -1, :]
+	corrupted_final_resid = corrupted_resid[:, -1, :]
+	
+	# Apply the layer norm to the final residuals
+	clean_final_resid = model.ln_final(clean_final_resid)
+	corrupted_final_resid = model.ln_final(corrupted_final_resid)
+	
+	# Get the logits associated with the clean target in clean run and corrupted counterfactual run
+	P_r = torch.tensor([torch.softmax(model.unembed(clean_final_resid[i]), dim=-1)[clean_targets[i]] for i in range(len(clean_targets))])
+	P_r_star = torch.tensor([torch.softmax(model.unembed(corrupted_final_resid[i]), dim=-1)[clean_targets[i]] for i in range(len(clean_targets))])
+	
+	# Get the logits associated with the corrupted target in clean run and corrupted counterfactual run
+	P_r_prime = torch.tensor([torch.softmax(model.unembed(clean_final_resid[i]), dim=-1)[corrupt_targets[i]] for i in range(len(corrupt_targets))])
+	P_r_star_prime = torch.tensor([torch.softmax(model.unembed(corrupted_final_resid[i]), dim=-1)[corrupt_targets[i]] for i in range(len(corrupt_targets))])
+
+	indirect_effects = 0.5 * ( (P_r_star - P_r)/(P_r + 1e-8) + (P_r_prime - P_r_star_prime)/(P_r_star_prime + 1e-8) )
+	if verbose:
+		print(f"P_r: {P_r.mean().item()}, P_r_star: {P_r_star.mean().item()}")
+		print(f"P_r_prime: {P_r_prime.mean().item()}, P_r_star_prime: {P_r_star_prime.mean().item()}")
+		print(f"Indirect effect: {indirect_effects.mean().item()}")
+
+	if set_baseline: # Workaround for the fact that the score may be negative and is easier to have the metric centered
+		global baseline_score
+		baseline_score = indirect_effects.mean().item()
+	return torch.mean(indirect_effects).item() - baseline_score
 
 def logit_difference_counterfactual(clean_resid: Float[Tensor, "batch seq d_model"],
                                    counterfactual_resid: Float[Tensor, "batch seq d_model"], 
