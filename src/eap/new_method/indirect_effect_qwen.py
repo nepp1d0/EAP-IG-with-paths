@@ -12,7 +12,6 @@ from utils.graph_search import path_message, evaluate_path, breadth_first_search
 from datetime import datetime
 
 transformers.logging.set_verbosity_error()
-# torch.set_default_dtype(torch.bfloat16)
 
 dotenv.load_dotenv()
 
@@ -20,14 +19,14 @@ TOKEN = os.getenv("TOKEN")
 DEVICE = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 torch.set_grad_enabled(False)
 TASK = "ioi" # "ioi" or "mcqa"
-TARGET_LENGTH = 15 # from 15 to 19 for ioi - from 32 to 37 for mcqa
+TARGET_LENGTH = 15 # from 15 to 19 for ioi - from 30 to 37 for mcqa
 BATCH_SIZE = 8 # Number of samples from the dataset to consider
-DEFAULT_METRIC = indirect_effect # Note: if logit_difference_counterfactual => take_message_from_clean = False | if indirect_effect => take_message_from_clean = True
-CONTRIBUTION_THRESHOLD = 0.00025 # close to 0.5 for logit_difference_counterfactual, close to 0.0001 for indirect_effect
+DEFAULT_METRIC = indirect_effect
+CONTRIBUTION_THRESHOLD = 0.00075
 
 huggingface_hub.login(token=TOKEN)
 # Note: Eventually can set set fold_ln=False, center_unembed=False, center_writing_weights=False
-model = HookedTransformer.from_pretrained('gpt2-small', 
+model = HookedTransformer.from_pretrained('Qwen/Qwen2.5-0.5B', 
                                           device=DEVICE, 
                                           torch_dtype=torch.float32, 
                                           center_unembed=True,
@@ -42,19 +41,35 @@ sample_answers = []
 samples_counterfactual_prompt = []
 sample_counterfactual_answers = []
 
-train_dataset = load_dataset('mib-bench/ioi', split='train')
-validation_dataset = load_dataset('mib-bench/ioi', split='validation')
-test_dataset = load_dataset('mib-bench/ioi', split='test')
-for sample in train_dataset:
-	if model.to_tokens(sample['prompt'], prepend_bos=True).shape[1] == TARGET_LENGTH:
-		samples.append(sample)
-		samples_prompt.append(sample['prompt'])
-		sample_answers.append(model.to_tokens(f' {sample['metadata']['indirect_object']}', prepend_bos=False).item())
+if TASK == "ioi":
+	train_dataset = load_dataset('mib-bench/ioi', split='train')
+	validation_dataset = load_dataset('mib-bench/ioi', split='validation')
+	test_dataset = load_dataset('mib-bench/ioi', split='test')
+	for sample in train_dataset:
+		if model.to_tokens(sample['prompt'], prepend_bos=True).shape[1] == TARGET_LENGTH:
+			samples.append(sample)
+			samples_prompt.append(sample['prompt'])
+			sample_answers.append(model.to_tokens(f' {sample['metadata']['indirect_object']}', prepend_bos=False).item())
 
-		samples_counterfactual_prompt.append(sample['s2_io_flip_counterfactual']['prompt'])
-		sample_counterfactual_answers.append(model.to_tokens(f' {sample['s2_io_flip_counterfactual']['choices'][sample['s2_io_flip_counterfactual']['answerKey']]}', prepend_bos=False).item())
-		if len(samples) >= BATCH_SIZE:
-			break
+			samples_counterfactual_prompt.append(sample['s2_io_flip_counterfactual']['prompt'])
+			sample_counterfactual_answers.append(model.to_tokens(f' {sample['s2_io_flip_counterfactual']['choices'][sample['s2_io_flip_counterfactual']['answerKey']]}', prepend_bos=False).item())
+			if len(samples) >= BATCH_SIZE:
+				break
+
+elif TASK == "mcqa":
+	train_dataset = load_dataset('mib-bench/copycolors_mcqa', '4_answer_choices', split='train')
+	validation_dataset = load_dataset('mib-bench/copycolors_mcqa', '4_answer_choices', split='validation')
+	test_dataset = load_dataset('mib-bench/copycolors_mcqa', '4_answer_choices', split='test')
+	for sample in train_dataset:
+		if model.to_tokens(sample['prompt'], prepend_bos=True).shape[1] == TARGET_LENGTH:
+			samples.append(sample)
+			samples_prompt.append(sample['prompt'])
+			sample_answers.append(model.to_tokens(f' {sample['choices']['label'][sample['answerKey']]}', prepend_bos=False).item())
+
+			samples_counterfactual_prompt.append(sample['symbol_counterfactual']['prompt'])
+			sample_counterfactual_answers.append(model.to_tokens(f'{sample['symbol_counterfactual']['choices']['label'][sample['symbol_counterfactual']['answerKey']]}', prepend_bos=False).item())
+			if len(samples) >= BATCH_SIZE:
+				break
 
 print(f"Loaded {len(samples)} samples for the task {TASK} with target length {TARGET_LENGTH}.")
 print(f"Sample prompt: \n''{samples_prompt[0]}''")
@@ -78,7 +93,7 @@ complete_paths =  breadth_first_search_with_counterfactual_cached_no_pos(
 	start_node = [FINAL_Node(model.cfg.n_layers - 1, None)],
 	ground_truth_tokens = sample_answers,
 	counterfactual_tokens = sample_counterfactual_answers,
-	max_depth = 10,
+	max_depth = 20,
 	max_branching_factor = 2048,
 	min_contribution = CONTRIBUTION_THRESHOLD,
 	min_contribution_percentage = 0.0,
@@ -151,13 +166,13 @@ output_data = {
 }
 
 # Save to JSON file
-filename = f"detected_paths/detected_circuit_gpt2_{TASK}_absolute_{DEFAULT_METRIC.__name__}_{CONTRIBUTION_THRESHOLD}_bs{BATCH_SIZE}_l{TARGET_LENGTH}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+filename = f"detected_paths/detected_circuit_qwen_{TASK}_{CONTRIBUTION_THRESHOLD}_bs{BATCH_SIZE}_l{TARGET_LENGTH}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
 with open(filename, 'w') as f:
     json.dump(output_data, f, indent=2)
 
 
 # Save to pickle file
-filename = f"detected_circuit_gpt2_{TASK}_absolute_{DEFAULT_METRIC.__name__}_{CONTRIBUTION_THRESHOLD}_bs{BATCH_SIZE}_l{TARGET_LENGTH}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pkl"
+filename = f"detected_circuit_qwen_{TASK}_{CONTRIBUTION_THRESHOLD}_bs{BATCH_SIZE}_l{TARGET_LENGTH}_{datetime.now().strftime('%Y%m%d_%H%M%S')}.pkl"
 with open(filename, 'wb') as f:
     pkl.dump((complete_paths, incomplete_paths), f)
 print(f"Saved {len(complete_paths + incomplete_paths)} paths to {filename}")

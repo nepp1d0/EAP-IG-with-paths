@@ -655,8 +655,8 @@ def evaluate_path_with_counterfactual_cached_no_pos(model, cache, counterfactual
 		clean_resid_with_path = path[-1].forward(model, cache) - message
 		
 		# Swap for consistent comparison (clean vs counterfactual)
-		clean_resid = counterfactual_resid
-		counterfactual_resid_with_path = clean_resid_with_path
+		clean_resid = clean_resid_with_path
+		counterfactual_resid_with_path = counterfactual_resid
 	
 	if invert_value:
 		return -metric(clean_resid, counterfactual_resid_with_path, model, correct_tokens, counterfactual_tokens, use_ablation_mode=False)
